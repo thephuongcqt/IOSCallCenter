@@ -9,36 +9,110 @@
 import UIKit
 
 class LoginController: UIViewController {
-
-    @IBOutlet weak var txtUsername: UITextField!
-    @IBOutlet weak var txtPassword: UITextField!
-    @IBOutlet weak var btnLogin: UIButton!
-    @IBOutlet weak var btnRegister: UIButton!
+    
+    let loginView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let txtUsername: BaseTextField = {
+        let tf = BaseTextField()
+        tf.placeholder = "Tên đăng nhập"
+        return tf
+    }()
+    
+    let txtPassword: BaseTextField = {
+       let tf = BaseTextField()
+        tf.placeholder = "Mật khẩu"
+        return tf
+    }()
+    
+    let btnLogin: BaseButton = {
+        let btn = BaseButton()
+        btn.setTitle("Đăng nhập", for: .normal)
+        btn.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        return btn
+    }()
+    
+    let btnRegister: BaseButton = {
+        let btn = BaseButton()
+        btn.setTitle("Đăng ký", for: .normal)
+        return btn
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        txtPassword.isSecureTextEntry = true
+        self.view.backgroundColor = .white
         
-        btnLogin.backgroundColor = .clear
-        btnLogin.layer.cornerRadius = 5
-        btnLogin.layer.borderWidth = 1
-        btnLogin.layer.borderColor = UIColor.gray.cgColor
+        self.view.addSubview(loginView)
+        loginView.addSubview(txtUsername)
+        loginView.addSubview(txtPassword)
+        loginView.addSubview(btnLogin)
+        loginView.addSubview(btnRegister)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        //The method when layout is ready for constraint
         
-        btnRegister.backgroundColor = .clear
-        btnRegister.layer.cornerRadius = 5
-        btnRegister.layer.borderWidth = 1
-        btnRegister.layer.borderColor = UIColor.gray.cgColor
+        loginView.leadingAnchor.constraint(equalTo: view.safeLeadingAnchor, constant: 20).isActive = true
+        loginView.trailingAnchor.constraint(equalTo: view.safeTrailingAnchor, constant: -20).isActive = true
+        loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        loginView.heightAnchor.constraint(equalToConstant: 240).isActive = true
         
-        btnLogin.tintColor = .gray
-        btnRegister.tintColor = .gray
+        txtUsername.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10).isActive = true
+        txtUsername.topAnchor.constraint(equalTo: loginView.topAnchor, constant: 10).isActive = true
+        txtUsername.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10).isActive = true
+        
+        txtPassword.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10).isActive = true
+        txtPassword.topAnchor.constraint(equalTo: txtUsername.bottomAnchor, constant: 10).isActive = true
+        txtPassword.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10).isActive = true
+        
+        btnLogin.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10).isActive = true
+        btnLogin.topAnchor.constraint(equalTo: txtPassword.bottomAnchor, constant: 10).isActive = true
+        btnLogin.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10).isActive = true
+        
+        btnRegister.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10).isActive = true
+        btnRegister.topAnchor.constraint(equalTo: btnLogin.bottomAnchor, constant: 10).isActive = true
+        btnRegister.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10).isActive = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @objc func handleLogin(){
+        if let username = txtUsername.text, let password = txtPassword.text, username.isEmpty == false, password.isEmpty == false{
+            let service = LoginService.shared
+            let params = [paramUsername: username, paramPassword: password]
+            
+            view.showHUD(with: "Loging in...")
+            service.login(with: params, completion: { (result) in
+                self.view.hideHUD()
+                switch result{
+                    case .success(let response):
+                        if let isSuccess = response.success, isSuccess == true , let clinic = response.value{
+                            print(clinic.clinicName!)
+                            print(clinic.currentTime ?? "Null Pointer")
+                            print(clinic.expiredLicense ?? "Null")
+                            
+                            
+                        } else if let err = response.error{
+                            self.showError(message: err)
+                        }
+                    case .failure(error: let err):
+                        self.showError(message: err.localizedDescription)
+                    }
+            })
+        }
+    }
+    
+    func showError(message: String){
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
