@@ -14,14 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
         let loginController = LoginController()
         let homeController = HomeViewController()
         
-        let rootNavigationController = NavigationViewController(rootViewController: homeController)
+        let rootNavigationController = NavigationViewController(rootViewController: loginController)
         
         window?.rootViewController = rootNavigationController
         

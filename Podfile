@@ -7,6 +7,7 @@ target 'CallCenter' do
 
   # Pods for CallCenter
 	pod 'Alamofire'
+	pod 'ObjectMapper', :git => 'https://github.com/alecdoconnor/ObjectMapper.git', :branch => 'Swift-4.2'
 	pod 'AlamofireObjectMapper'
 	pod 'MBProgressHUD'
 end
