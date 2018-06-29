@@ -13,33 +13,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
         let loginController = LoginController()
         let homeController = HomeViewController()
-        var rootNavigationController: NavigationViewController
+//        var rootNavigationController: NavigationViewController
+        var rootNavigationController: UINavigationController
         if let username = Data.getUsername(){
             //Move to home page when user is already logged in
-            rootNavigationController = NavigationViewController(rootViewController: homeController)
+            var testVC = TestViewController()
+            rootNavigationController = TestNavigationController(rootViewController: testVC)
+//            rootNavigationController = NavigationViewController(rootViewController: homeController)
             //Refresh data
             let service = LoginService.shared
             let params = BaseRequest.createParamsUserInfo(username: username)
             
-            homeController.view.showHUD(with: "Đang tải")
+//            homeController.view.showHUD(with: "Đang tải")
+            testVC.view.showHUD(with: "Đang tải")
             service.getUserInformation(with: params) { (result) in
-                homeController.view.hideHUD()
+//                homeController.view.hideHUD()
+                testVC.view.hideHUD()
                 switch result{
                 case .success(let response):
                     if let isSuccess = response.success, isSuccess, let clinic = response.value{
                         Data.user = clinic
                     } else if let err = response.error{
-                        homeController.showAlert(message: err)
+                        testVC.showAlert(message: err)
                     }
                 case .failure(error: let err):
-                    homeController.showAlert(message: err.localizedDescription)
+                    testVC.showAlert(message: err.localizedDescription)
                 }
             }
         } else{

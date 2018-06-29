@@ -58,7 +58,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func dismissKeyBoard() {
         super.dismissKeyBoard()
         searchBar?.endEditing(true)
-    }    
+    }
     
     @objc func refresh(_ refreshControl: UIRefreshControl) {
         fetchData()

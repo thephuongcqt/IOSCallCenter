@@ -21,7 +21,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         view.addSubview(tableView)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
@@ -55,6 +55,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func handleLogout(){
         Data.user = nil
         Data.setUsername(value: nil)
-        self.navigationController?.setViewControllers([LoginController()], animated: true)
+        let appDelegate = UIApplication.shared.delegate!
+        appDelegate.window??.rootViewController = NavigationViewController(rootViewController: LoginController())
     }
 }

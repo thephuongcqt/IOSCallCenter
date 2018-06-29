@@ -8,14 +8,18 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
-    
+class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, DatePickerModalDelegate{
+    func datePickerChanged(picker: UIDatePicker) {
+        date = picker.date
+    }
+    var dateCell: UITableViewCell?
     var appointments: [Appointment]?
     var searchBar: UISearchBar?
     
     var tableView: UITableView = {
        var tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isUserInteractionEnabled = true
         return tableView
     }()
     let refreshControl: UIRefreshControl = {
@@ -24,22 +28,21 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         return rc
     }()
     
-    var datePicker: UIDatePicker = {
-        var picker = UIDatePicker()
-        picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.datePickerMode = .date
-        picker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
-        return picker
-    }()
+    var date: Date = Date() {
+        didSet{
+            if let cell = dateCell{
+                cell.textLabel?.text = date.toDateString(with: dateFormatForAppointments)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupKeyboardGestureRecognizer()
-        view.addSubview(datePicker)
+    
         view.addSubview(tableView)
-        
+        navigationItem.hidesSearchBarWhenScrolling = true
         searchBar?.delegate = self
+        tableView.frame = view.bounds
         tableView.register(AppointmentCell.self, forCellReuseIdentifier: "cellId")
         tableView.delegate = self
         tableView.dataSource = self
@@ -49,30 +52,27 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         } else {
             tableView.backgroundView = refreshControl
         }
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
         
-        loadAppointments(date: Date())
+        loadAppointments()
     }
     
     override func dismissKeyBoard() {
-        super.dismissKeyBoard()
         searchBar?.endEditing(true)
     }
     
     override func viewDidLayoutSubviews() {
-        datePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        datePicker.topAnchor.constraint(equalTo: view.safeTopAnchor, constant: -30).isActive = true
-        datePicker.widthAnchor.constraint(equalToConstant: 350).isActive = true
-        datePicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        tableView.leadingAnchor.constraint(equalTo: view.safeLeadingAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.safeTrailingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor).isActive = true
-                    
+        let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        tableView.contentInset = UIEdgeInsets( top: topBarHeight + 20, left: 0, bottom: 100, right: 0)
     }
     
     @objc func refresh(_ refreshControl: UIRefreshControl) {
-        loadAppointments(date: datePicker.date)
+        loadAppointments()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,7 +80,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appointments?.count ?? 0
+        return (appointments?.count ?? 0) + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -88,21 +88,34 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! AppointmentCell
-        if let item = self.appointments?[indexPath.row]{
-            cell.setPhoneNumber(phone: item.phoneNumber ?? "")
-            cell.setPatientName(name: item.fullName ?? "")
-            cell.setNo(no: item.no ?? 0)
-            cell.setTime(time: item.appointmentTime?.toTimeString() ?? "")
+        if indexPath.row == 0{
+            dateCell = UITableViewCell()
+            dateCell!.textLabel?.text = date.toDateString(with: dateFormatForAppointments)
+            return dateCell!
+        } else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! AppointmentCell
+            if let item = self.appointments?[indexPath.row - 1]{
+                cell.setPhoneNumber(phone: item.phoneNumber ?? "")
+                cell.setPatientName(name: item.fullName ?? "")
+                cell.setNo(no: item.no ?? 0)
+                cell.setTime(time: item.appointmentTime?.toTimeString() ?? "")
+            }
+            return cell
         }
-        return cell
     }
     
-    @objc func datePickerChanged(picker: UIDatePicker){
-        loadAppointments(date: picker.date)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.dismissKeyBoard()
+        if indexPath.row == 0{
+            let datePickerVC = DatePickerController()
+            datePickerVC.date = self.date
+            datePickerVC.delegate = self
+            datePickerVC.modalPresentationStyle = .overCurrentContext
+            present(datePickerVC, animated: true, completion: nil)
+        }
     }
     
-    func loadAppointments(date: Date!){
+    func loadAppointments(){
         let service = AppointmentService.shared
         let params = BaseRequest.createParamsGetAppointmentByDate(username: Data.getUsername() ?? "", date: date)
         
