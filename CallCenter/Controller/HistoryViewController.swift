@@ -88,6 +88,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @objc func datePickerChanged(picker: UIDatePicker){
+        loadAppointments(date: picker.date)
         print(picker.date)
     }
     
@@ -102,7 +103,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             case .success(let response):
                 if let isSuccess = response.success, isSuccess == true , let list = response.value{
                     self.appointments = list
-                    self.tableView.reloadData()
+                    Data.appoinmentList = list
+                    if(self.searchBar?.text?.isEmptyOrWhitespace() ?? false){
+                        self.tableView.reloadData()
+                    } else{
+                        self.searchBar(self.searchBar!, textDidChange: self.searchBar!.text ?? "")
+                    }
                 } else if let err = response.error{
                     self.showError(message: err)
                 }

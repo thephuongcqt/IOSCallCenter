@@ -10,4 +10,11 @@ import UIKit
 
 class Data: NSObject {
     static var appoinmentList: [Appointment]?
+    static var defaults = UserDefaults.standard
+    static func getUsername() -> String?{
+        return defaults.string(forKey: keyUsername)
+    }
+    static func setUsername(value username: String){
+        defaults.setValue(username, forKey: keyUsername)
+    }
 }

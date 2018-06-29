@@ -92,8 +92,14 @@ class LoginController: UIViewController {
                 self.view.hideHUD()
                 switch result{
                     case .success(let response):
-                        if let isSuccess = response.success, isSuccess == true , let clinic = response.value{
-                            
+                        if let isSuccess = response.success, isSuccess == true , let clinics = response.value{
+                            if clinics.count > 0, let username = clinics[0].username{
+                                Data.setUsername(value: username)
+                                let homeVC = HomeViewController()
+                                self.navigationController?.setViewControllers([homeVC], animated: false)
+                            } else{
+                                self.showError(message: "Đã có lỗi xảy ra khi đăng nhập, vui lòng thử lại sau")
+                            }
                         } else if let err = response.error{
                             self.showError(message: err)
                         }

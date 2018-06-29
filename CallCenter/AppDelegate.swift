@@ -20,8 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let loginController = LoginController()
         let homeController = HomeViewController()
-        
-        let rootNavigationController = NavigationViewController(rootViewController: homeController)
+        var rootNavigationController: NavigationViewController
+        if let username = Data.getUsername(){
+            rootNavigationController = NavigationViewController(rootViewController: homeController)
+        } else{
+            rootNavigationController = NavigationViewController(rootViewController: loginController)
+        }
         
         window?.rootViewController = rootNavigationController
         
