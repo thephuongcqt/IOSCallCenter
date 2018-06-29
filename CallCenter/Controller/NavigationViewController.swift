@@ -18,9 +18,7 @@ class NavigationViewController: UINavigationController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
-    }
-    
-
+    }    
     /*
     // MARK: - Navigation
 

@@ -45,6 +45,7 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
+        self.setupKeyboardGestureRecognizer()
         self.view.addSubview(loginView)
         loginView.addSubview(txtUsername)
         loginView.addSubview(txtPassword)
@@ -85,32 +86,30 @@ class LoginController: UIViewController {
     @objc func handleLogin(){
         if let username = txtUsername.text, let password = txtPassword.text, username.isEmpty == false, password.isEmpty == false{
             let service = LoginService.shared
-            let params = [paramUsername: username, paramPassword: password]
+            let params = BaseRequest.createParamsUserLogin(username: username, password: password)
             
             view.showHUD(with: "Loging in...")
             service.login(with: params, completion: { (result) in
                 self.view.hideHUD()
                 switch result{
                     case .success(let response):
-                        if let isSuccess = response.success, isSuccess == true , let clinics = response.value{
-                            if clinics.count > 0, let username = clinics[0].username{
+                        if let isSuccess = response.success, isSuccess == true , let clinic = response.value{
+                            if let username = clinic.username{
                                 Data.setUsername(value: username)
-                                let homeVC = HomeViewController()
-                                self.navigationController?.setViewControllers([homeVC], animated: false)
+                                Data.user = clinic
+                                let homeVC = HomeViewController()                                
+                                self.navigationController?.setViewControllers([homeVC], animated: true)
                             } else{
-                                self.showError(message: "Đã có lỗi xảy ra khi đăng nhập, vui lòng thử lại sau")
+                                self.showAlert(message: "Đã có lỗi xảy ra khi đăng nhập, vui lòng thử lại sau")
                             }
                         } else if let err = response.error{
-                            self.showError(message: err)
+                            self.showAlert(message: err)
                         }
                     case .failure(error: let err):
-                        self.showError(message: err.localizedDescription)
+                        self.showAlert(message: err.localizedDescription)
                     }
             })
         }
     }
-    
-    
-    
 }
 

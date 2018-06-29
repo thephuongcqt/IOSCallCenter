@@ -25,4 +25,14 @@ class LoginService{
             })
         }
     }
+    
+    func getUserInformation(with params: [String: Any], completion: @escaping completionHandler<loginResultType>){
+        
+        let service = BaseService.shared
+        if let url = service.getAbsoluteUrl(from: getInfoUrl){
+            service.postParams(with: url, parameters: params, completion: { (result: loginResultType) in
+                completion(result)
+            })
+        }
+    }
 }

@@ -22,8 +22,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeController = HomeViewController()
         var rootNavigationController: NavigationViewController
         if let username = Data.getUsername(){
+            //Move to home page when user is already logged in
             rootNavigationController = NavigationViewController(rootViewController: homeController)
+            //Refresh data
+            let service = LoginService.shared
+            let params = BaseRequest.createParamsUserInfo(username: username)
+            
+            homeController.view.showHUD(with: "Đang tải")
+            service.getUserInformation(with: params) { (result) in
+                homeController.view.hideHUD()
+                switch result{
+                case .success(let response):
+                    if let isSuccess = response.success, isSuccess, let clinic = response.value{
+                        Data.user = clinic
+                    } else if let err = response.error{
+                        homeController.showAlert(message: err)
+                    }
+                case .failure(error: let err):
+                    homeController.showAlert(message: err.localizedDescription)
+                }
+            }
         } else{
+            //move to login page
             rootNavigationController = NavigationViewController(rootViewController: loginController)
         }
         

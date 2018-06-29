@@ -23,6 +23,7 @@ class Clinic: Mappable {
     var currentTime: Date?
     var imageURL: String?
     var greetingURL: String?
+    var workingHours: [WorkingHour]?
     
     required init?(map: Map) {
         
@@ -41,5 +42,6 @@ class Clinic: Mappable {
         currentTime <- (map["currentTime"], BaseDateTransform())
         imageURL <- map["imageURL"]
         greetingURL <- map["greetingURL"]
+        workingHours <- map["workingHours"]
     }
 }

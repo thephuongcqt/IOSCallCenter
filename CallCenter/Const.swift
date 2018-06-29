@@ -10,6 +10,7 @@ import Foundation
 
 let baseUrl = "http://27.74.245.84:8080/"
 let loginUrl = "clinic/Login"
+let getInfoUrl = "clinic/getClinicInformation"
 let appointmentsUrl = "appointment/getAppointmentsListByDate"
 
 let keyUsername = "username"
@@ -19,6 +20,7 @@ let paramClinicUsername = "clinicUsername"
 let paramAppointmentDate = "date"
 
 let dateFormatForAppointments = "yyyy-MM-dd"
-let dateStringFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
+let dateTransformFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
+let timeTransformFormat = "HH:mm:ss"
 let timeFormat = "HH:mm"
 let errorNetworking = "Network error, please try again"

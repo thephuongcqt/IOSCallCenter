@@ -1,22 +1,21 @@
 //
-//  BaseDateTransform.swift
-//  StudyQuizIOS
+//  BaseTimeTransform.swift
+//  CallCenter
 //
-//  Created by Nguyen The Phuong on 12/19/17.
-//  Copyright © 2017 Nguyen The Phuong. All rights reserved.
+//  Created by Nguyen The Phuong on 6/29/18.
+//  Copyright © 2018 Nguyen The Phuong. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import ObjectMapper
 
-class BaseDateTransform: DateTransform{
-    
+class BaseTimeTransform: DateTransform {
     public typealias Object = NSDate
     public typealias JSON = String
     
     var dateFormatter: DateFormatter = {
-       let df = DateFormatter()
-        df.dateFormat = dateTransformFormat
+        let df = DateFormatter()
+        df.dateFormat = timeTransformFormat
         df.locale = Locale(identifier: "vi_VN")
         df.timeZone = TimeZone(secondsFromGMT: 7)
         return df

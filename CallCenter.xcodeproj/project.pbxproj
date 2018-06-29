@@ -14,6 +14,10 @@
 		BF2D181E20E54E1B0001F113 /* Extensions+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D181D20E54E1B0001F113 /* Extensions+UIColor.swift */; };
 		BF2D182020E54E600001F113 /* Extensions+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D181F20E54E600001F113 /* Extensions+Date.swift */; };
 		BF2D182220E5C3AE0001F113 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182120E5C3AE0001F113 /* Data.swift */; };
+		BF2D182420E5FDB70001F113 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182320E5FDB70001F113 /* LoginResponse.swift */; };
+		BF2D182620E5FE820001F113 /* WorkingHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182520E5FE820001F113 /* WorkingHour.swift */; };
+		BF2D182820E5FFA30001F113 /* BaseTimeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182720E5FFA30001F113 /* BaseTimeTransform.swift */; };
+		BF2D182A20E602D00001F113 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182920E602D00001F113 /* BaseRequest.swift */; };
 		BF4C744A20E0E60000C108CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C744920E0E60000C108CC /* AppDelegate.swift */; };
 		BF4C744C20E0E60000C108CC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C744B20E0E60000C108CC /* LoginController.swift */; };
 		BF4C745120E0E60200C108CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4C745020E0E60200C108CC /* Assets.xcassets */; };
@@ -50,6 +54,10 @@
 		BF2D181D20E54E1B0001F113 /* Extensions+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIColor.swift"; sourceTree = "<group>"; };
 		BF2D181F20E54E600001F113 /* Extensions+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+Date.swift"; sourceTree = "<group>"; };
 		BF2D182120E5C3AE0001F113 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		BF2D182320E5FDB70001F113 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		BF2D182520E5FE820001F113 /* WorkingHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHour.swift; sourceTree = "<group>"; };
+		BF2D182720E5FFA30001F113 /* BaseTimeTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTimeTransform.swift; sourceTree = "<group>"; };
+		BF2D182920E602D00001F113 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		BF4C744620E0E60000C108CC /* CallCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4C744920E0E60000C108CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF4C744B20E0E60000C108CC /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -163,6 +171,7 @@
 			children = (
 				BFC1E39920E15763004CCFEC /* ApiModel */,
 				BFC1E39D20E15763004CCFEC /* BaseDateTransform.swift */,
+				BF2D182720E5FFA30001F113 /* BaseTimeTransform.swift */,
 				BF2D182120E5C3AE0001F113 /* Data.swift */,
 			);
 			path = Model;
@@ -175,6 +184,9 @@
 				BFC1E39B20E15763004CCFEC /* BaseResponse.swift */,
 				BFC1E39C20E15763004CCFEC /* Clinic.swift */,
 				BF2D181920E542BA0001F113 /* Appointment.swift */,
+				BF2D182320E5FDB70001F113 /* LoginResponse.swift */,
+				BF2D182520E5FE820001F113 /* WorkingHour.swift */,
+				BF2D182920E602D00001F113 /* BaseRequest.swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -345,14 +357,18 @@
 				BFE6412A20E146FE0024BA22 /* Extensions+UIViewController.swift in Sources */,
 				BFA49BBD20E27FB60041EF76 /* TodayViewController.swift in Sources */,
 				BF4C744A20E0E60000C108CC /* AppDelegate.swift in Sources */,
+				BF2D182420E5FDB70001F113 /* LoginResponse.swift in Sources */,
 				BF2D181A20E542BA0001F113 /* Appointment.swift in Sources */,
 				BFC1E3A420E15771004CCFEC /* BaseService.swift in Sources */,
+				BF2D182A20E602D00001F113 /* BaseRequest.swift in Sources */,
 				BFE6414A20E14B380024BA22 /* BaseTextField.swift in Sources */,
 				BFE6412820E146B10024BA22 /* Extensions.swift in Sources */,
 				BF2D182220E5C3AE0001F113 /* Data.swift in Sources */,
 				BFE6414220E149AB0024BA22 /* Extensions+String.swift in Sources */,
 				BFE6413F20E149AB0024BA22 /* BaseJsonObject.swift in Sources */,
+				BF2D182620E5FE820001F113 /* WorkingHour.swift in Sources */,
 				BFE6414120E149AB0024BA22 /* Extensions+UIView.swift in Sources */,
+				BF2D182820E5FFA30001F113 /* BaseTimeTransform.swift in Sources */,
 				BFA49BBB20E27E0B0041EF76 /* HomeViewController.swift in Sources */,
 				BFA49BC120E27FCD0041EF76 /* SettingViewController.swift in Sources */,
 				BFE6414320E149AB0024BA22 /* Extensions+UIImageView.swift in Sources */,

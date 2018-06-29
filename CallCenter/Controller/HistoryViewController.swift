@@ -94,7 +94,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func loadAppointments(date: Date!){
         let service = AppointmentService.shared
-        let params = [paramClinicUsername: "hoanghoa", paramAppointmentDate: date.toDateString(with: dateFormatForAppointments)]
+        let params = BaseRequest.createParamsGetAppointmentByDate(username: Data.getUsername() ?? "", date: date)
         
         view.showHUD(with: "Đang tải danh sách lịch hẹn")
         service.getAppointments(with: params as [String : Any]) { (result) in
@@ -110,10 +110,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                         self.searchBar(self.searchBar!, textDidChange: self.searchBar!.text ?? "")
                     }
                 } else if let err = response.error{
-                    self.showError(message: err)
+                    self.showAlert(message: err)
                 }
             case .failure(error: let err):
-                self.showError(message: err.localizedDescription)
+                self.showAlert(message: err.localizedDescription)
             }
         }
     }
