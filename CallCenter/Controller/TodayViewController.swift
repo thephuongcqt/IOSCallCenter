@@ -12,6 +12,11 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     var searchBar: UISearchBar?
     var tableView: UITableView!
+    let refreshControl: UIRefreshControl = {
+        var rc = UIRefreshControl()
+        rc.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        return rc
+    }()
     
     var appointments: [Appointment]?
     
@@ -25,7 +30,13 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         searchBar?.delegate = self
         tableView.delegate = self
-        tableView.dataSource = self        
+        tableView.dataSource = self
+        
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.backgroundView = refreshControl
+        }
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -35,25 +46,7 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let service = AppointmentService.shared
-        let params = BaseRequest.createParamsGetAppointment(username: Data.getUsername() ?? "")
-        
-        view.showHUD(with: "Đang tải danh sách lịch hẹn")
-        service.getAppointments(with: params) { (result) in
-            self.view.hideHUD()
-            switch result{
-                case .success(let response):
-                    if let isSuccess = response.success, isSuccess == true , let list = response.value{
-                        self.appointments = list
-                        Data.appoinmentList = list
-                        self.tableView.reloadData()
-                    } else if let err = response.error{
-                        self.showAlert(message: err)
-                }
-                case .failure(error: let err):
-                    self.showAlert(message: err.localizedDescription)
-            }
-        }
+        fetchData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -65,8 +58,36 @@ class TodayViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func dismissKeyBoard() {
         super.dismissKeyBoard()
         searchBar?.endEditing(true)
+    }    
+    
+    @objc func refresh(_ refreshControl: UIRefreshControl) {
+        fetchData()
     }
     
+    func fetchData(){
+        let service = AppointmentService.shared
+        let params = BaseRequest.createParamsGetAppointment(username: Data.getUsername() ?? "")
+        view.showHUD(with: "Đang tải danh sách lịch hẹn")
+        service.getAppointments(with: params) { (result) in
+            if self.refreshControl.isRefreshing{
+                self.refreshControl.endRefreshing()
+            }
+            self.view.hideHUD()
+            switch result{
+            case .success(let response):
+                if let isSuccess = response.success, isSuccess == true , let list = response.value{
+                    self.appointments = list
+                    Data.appoinmentList = list
+                    self.tableView.reloadData()
+                } else if let err = response.error{
+                    self.showAlert(message: err)
+                }
+            case .failure(error: let err):
+                self.showAlert(message: err.localizedDescription)
+            }
+        }
+    }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

@@ -18,6 +18,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    let refreshControl: UIRefreshControl = {
+        var rc = UIRefreshControl()
+        rc.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        return rc
+    }()
     
     var datePicker: UIDatePicker = {
         var picker = UIDatePicker()
@@ -38,12 +43,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.register(AppointmentCell.self, forCellReuseIdentifier: "cellId")
         tableView.delegate = self
         tableView.dataSource = self
-//        if #available(iOS 11.0, *) {
-//            tableView.contentInsetAdjustmentBehavior = .never
-//        } else {
-//            automaticallyAdjustsScrollViewInsets = false
-//        }
-        loadAppointments(date: Date().yesterday)
+        
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.backgroundView = refreshControl
+        }
+        
+        loadAppointments(date: Date())
     }
     
     override func dismissKeyBoard() {
@@ -62,6 +69,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.trailingAnchor.constraint(equalTo: view.safeTrailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeBottomAnchor).isActive = true
                     
+    }
+    
+    @objc func refresh(_ refreshControl: UIRefreshControl) {
+        loadAppointments(date: datePicker.date)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -89,7 +100,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @objc func datePickerChanged(picker: UIDatePicker){
         loadAppointments(date: picker.date)
-        print(picker.date)
     }
     
     func loadAppointments(date: Date!){
@@ -99,6 +109,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         view.showHUD(with: "Đang tải danh sách lịch hẹn")
         service.getAppointments(with: params as [String : Any]) { (result) in
             self.view.hideHUD()
+            if self.refreshControl.isRefreshing{
+                self.refreshControl.endRefreshing()
+            }
+            
             switch result{
             case .success(let response):
                 if let isSuccess = response.success, isSuccess == true , let list = response.value{
