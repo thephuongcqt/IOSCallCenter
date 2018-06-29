@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginController: UIViewController {
-    
+        
     let loginView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -93,10 +93,6 @@ class LoginController: UIViewController {
                 switch result{
                     case .success(let response):
                         if let isSuccess = response.success, isSuccess == true , let clinic = response.value{
-                            print(clinic.clinicName!)
-                            print(clinic.currentTime ?? "Null Pointer")
-                            print(clinic.expiredLicense ?? "Null")
-                            
                             
                         } else if let err = response.error{
                             self.showError(message: err)
@@ -108,11 +104,7 @@ class LoginController: UIViewController {
         }
     }
     
-    func showError(message: String){
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
+    
     
 }
 

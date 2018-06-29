@@ -22,23 +22,22 @@ class HomeViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupKeyboardGestureRecognizer()
-        
         view.backgroundColor = .white
         
-//        let todayVC = TodayViewController()
-        let todayVC = SettingViewController()
+        let todayVC = TodayViewController()
+        todayVC.searchBar = self.searchBar
         let todayNavController = UINavigationController(rootViewController: todayVC)
         todayNavController.tabBarItem.image = #imageLiteral(resourceName: "icon_folder")
         todayNavController.tabBarItem.title = "Trang chủ"
         
-//        let historyVC = HistoryViewController()
-        let historyVC = SettingViewController()
+        let historyVC = HistoryViewController()
+        historyVC.searchBar = self.searchBar
         let historyNavController = UINavigationController(rootViewController: historyVC)
         historyNavController.title = "Lịch sử"
         historyNavController.tabBarItem.image = #imageLiteral(resourceName: "icon_latest")
         
         let settingVC = SettingViewController()
+        settingVC.searchBar = self.searchBar
         let settingNavController = UINavigationController(rootViewController: settingVC)
         settingNavController.title = "Cài đặt"
         settingNavController.tabBarItem.image = #imageLiteral(resourceName: "icon_settings")
@@ -56,16 +55,6 @@ class HomeViewController: UITabBarController {
         navigationController?.navigationBar.tintColor = .red
         navigationController?.navigationBar.isTranslucent = false
         
-        
-        navigationItem.titleView = searchBar
-    }
-    
-    override func dismissKeyBoard() {
-        super.dismissKeyBoard()
-        searchBar.endEditing(true)
-    }
-    
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print(item.tag)
+        navigationItem.titleView = searchBar        
     }
 }

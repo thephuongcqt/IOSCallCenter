@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		652070A76346FC250238F58B /* Pods_CallCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C595BCEAB1BB1FB255A8729F /* Pods_CallCenter.framework */; };
+		BF16972E20E531D100211BD0 /* AppointmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF16972D20E531D100211BD0 /* AppointmentCell.swift */; };
+		BF2D181A20E542BA0001F113 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D181920E542BA0001F113 /* Appointment.swift */; };
+		BF2D181C20E543E80001F113 /* AppointmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D181B20E543E80001F113 /* AppointmentService.swift */; };
+		BF2D181E20E54E1B0001F113 /* Extensions+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D181D20E54E1B0001F113 /* Extensions+UIColor.swift */; };
+		BF2D182020E54E600001F113 /* Extensions+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D181F20E54E600001F113 /* Extensions+Date.swift */; };
+		BF2D182220E5C3AE0001F113 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182120E5C3AE0001F113 /* Data.swift */; };
 		BF4C744A20E0E60000C108CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C744920E0E60000C108CC /* AppDelegate.swift */; };
 		BF4C744C20E0E60000C108CC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C744B20E0E60000C108CC /* LoginController.swift */; };
 		BF4C745120E0E60200C108CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4C745020E0E60200C108CC /* Assets.xcassets */; };
@@ -38,6 +44,12 @@
 /* Begin PBXFileReference section */
 		14A960964F4A8E19FC1A9DD8 /* Pods-CallCenter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CallCenter.release.xcconfig"; path = "Pods/Target Support Files/Pods-CallCenter/Pods-CallCenter.release.xcconfig"; sourceTree = "<group>"; };
 		A0A0114FA47BA395EEF62747 /* Pods-CallCenter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CallCenter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CallCenter/Pods-CallCenter.debug.xcconfig"; sourceTree = "<group>"; };
+		BF16972D20E531D100211BD0 /* AppointmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCell.swift; sourceTree = "<group>"; };
+		BF2D181920E542BA0001F113 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		BF2D181B20E543E80001F113 /* AppointmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentService.swift; sourceTree = "<group>"; };
+		BF2D181D20E54E1B0001F113 /* Extensions+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIColor.swift"; sourceTree = "<group>"; };
+		BF2D181F20E54E600001F113 /* Extensions+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+Date.swift"; sourceTree = "<group>"; };
+		BF2D182120E5C3AE0001F113 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		BF4C744620E0E60000C108CC /* CallCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4C744920E0E60000C108CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF4C744B20E0E60000C108CC /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -130,8 +142,8 @@
 				BFE6412420E145000024BA22 /* NavigationViewController.swift */,
 				BFA49BBA20E27E0B0041EF76 /* HomeViewController.swift */,
 				BFA49BBC20E27FB60041EF76 /* TodayViewController.swift */,
-				BFA49BBE20E27FC40041EF76 /* HistoryViewController.swift */,
 				BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */,
+				BFA49BBE20E27FC40041EF76 /* HistoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -141,6 +153,7 @@
 			children = (
 				BFC1E3A220E15770004CCFEC /* BaseService.swift */,
 				BFC1E3A320E15771004CCFEC /* LoginService.swift */,
+				BF2D181B20E543E80001F113 /* AppointmentService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -150,6 +163,7 @@
 			children = (
 				BFC1E39920E15763004CCFEC /* ApiModel */,
 				BFC1E39D20E15763004CCFEC /* BaseDateTransform.swift */,
+				BF2D182120E5C3AE0001F113 /* Data.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,6 +174,7 @@
 				BFC1E39A20E15763004CCFEC /* ResultType.swift */,
 				BFC1E39B20E15763004CCFEC /* BaseResponse.swift */,
 				BFC1E39C20E15763004CCFEC /* Clinic.swift */,
+				BF2D181920E542BA0001F113 /* Appointment.swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -173,6 +188,8 @@
 				BFE6413E20E149AA0024BA22 /* Extensions+UIImageView.swift */,
 				BFE6413C20E149AA0024BA22 /* Extensions+UIView.swift */,
 				BFE6412720E146B10024BA22 /* Extensions.swift */,
+				BF2D181F20E54E600001F113 /* Extensions+Date.swift */,
+				BF2D181D20E54E1B0001F113 /* Extensions+UIColor.swift */,
 				BFE6412920E146FE0024BA22 /* Extensions+UIViewController.swift */,
 			);
 			path = Utils;
@@ -183,6 +200,7 @@
 			children = (
 				BFE6414720E14AF40024BA22 /* BaseButton.swift */,
 				BFE6414920E14B380024BA22 /* BaseTextField.swift */,
+				BF16972D20E531D100211BD0 /* AppointmentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,17 +334,22 @@
 				BFC1E3A520E15771004CCFEC /* LoginService.swift in Sources */,
 				BFC1E39F20E15763004CCFEC /* BaseResponse.swift in Sources */,
 				BFC1E3A120E15763004CCFEC /* BaseDateTransform.swift in Sources */,
+				BF2D181E20E54E1B0001F113 /* Extensions+UIColor.swift in Sources */,
 				BFC1E39E20E15763004CCFEC /* ResultType.swift in Sources */,
+				BF2D182020E54E600001F113 /* Extensions+Date.swift in Sources */,
 				BFE6412520E145000024BA22 /* NavigationViewController.swift in Sources */,
 				BFA49BBF20E27FC40041EF76 /* HistoryViewController.swift in Sources */,
 				BF4C744C20E0E60000C108CC /* LoginController.swift in Sources */,
+				BF16972E20E531D100211BD0 /* AppointmentCell.swift in Sources */,
 				BFC1E3A020E15763004CCFEC /* Clinic.swift in Sources */,
 				BFE6412A20E146FE0024BA22 /* Extensions+UIViewController.swift in Sources */,
 				BFA49BBD20E27FB60041EF76 /* TodayViewController.swift in Sources */,
 				BF4C744A20E0E60000C108CC /* AppDelegate.swift in Sources */,
+				BF2D181A20E542BA0001F113 /* Appointment.swift in Sources */,
 				BFC1E3A420E15771004CCFEC /* BaseService.swift in Sources */,
 				BFE6414A20E14B380024BA22 /* BaseTextField.swift in Sources */,
 				BFE6412820E146B10024BA22 /* Extensions.swift in Sources */,
+				BF2D182220E5C3AE0001F113 /* Data.swift in Sources */,
 				BFE6414220E149AB0024BA22 /* Extensions+String.swift in Sources */,
 				BFE6413F20E149AB0024BA22 /* BaseJsonObject.swift in Sources */,
 				BFE6414120E149AB0024BA22 /* Extensions+UIView.swift in Sources */,
@@ -334,6 +357,7 @@
 				BFA49BC120E27FCD0041EF76 /* SettingViewController.swift in Sources */,
 				BFE6414320E149AB0024BA22 /* Extensions+UIImageView.swift in Sources */,
 				BFE6414020E149AB0024BA22 /* Extensions+MBProgressHUD.swift in Sources */,
+				BF2D181C20E543E80001F113 /* AppointmentService.swift in Sources */,
 				BFE6414820E14AF40024BA22 /* BaseButton.swift in Sources */,
 				BFE6414520E14AAE0024BA22 /* Const.swift in Sources */,
 			);

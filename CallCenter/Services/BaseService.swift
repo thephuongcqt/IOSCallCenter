@@ -67,24 +67,14 @@ class BaseService{
 //        }
 //        completion(nil, errorNetworking)
 //    }
-    func getParams<T: Decodable>(with url: URL, completion: @escaping (_ result: T?, _ success: Bool, _ error: Error?) -> ()){
-        Alamofire.request(url).responseJSON { (response) in
-            if response.error != nil{
-                completion(nil, false, response.error)
-                return
+    func getParams<T: Mappable>(with url: URL, parameters: [String: Any], completion: @escaping (ResultType<T>) -> ()){
+        Alamofire.request(url, method: .get, parameters: parameters).validate(statusCode: 200...300).responseObject { (resonse: DataResponse<T>) in
+            switch resonse.result{
+            case .success(let value):
+                completion(.success(value))
+            case .failure(let error):
+                completion(.failure(error: error))
             }
-            
-            if response.result.isSuccess, let data = response.data{
-                do{
-                    let result = try JSONDecoder().decode(T.self, from: data)
-                    completion(result, true, nil)
-                    return
-                }
-                catch _ {
-                    // handle
-                }
-            }
-            completion(nil, false, nil)
         }
     }
     

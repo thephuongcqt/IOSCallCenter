@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let loginController = LoginController()
         let homeController = HomeViewController()
         
-        let rootNavigationController = NavigationViewController(rootViewController: loginController)
+        let rootNavigationController = NavigationViewController(rootViewController: homeController)
         
         window?.rootViewController = rootNavigationController
         

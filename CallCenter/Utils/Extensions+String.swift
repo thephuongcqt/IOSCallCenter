@@ -34,4 +34,12 @@ extension String {
         
         return boundingBox
     }
+    
+    func isEmptyOrWhitespace() -> Bool {
+        if(self.isEmpty) {
+            return true
+        }
+        
+        return self.trimmingCharacters(in: .whitespaces).isEmpty
+    }
 }

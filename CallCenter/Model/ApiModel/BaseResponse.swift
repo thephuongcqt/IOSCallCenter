@@ -11,7 +11,7 @@ import ObjectMapper
 
 class BaseResponse<T: Mappable>: Mappable{
     var success: Bool?
-    var value: T?
+    var value: [T]?
     var error: String?
     
     required init?(map: Map) {
@@ -24,6 +24,8 @@ class BaseResponse<T: Mappable>: Mappable{
     }
 }
 
+typealias completionHandler<T> = (T) -> ()
 
 typealias loginResultType = ResultType<BaseResponse<Clinic>>
-typealias completionHandler<T> = (T) -> ()
+typealias getAppointmentsType = ResultType<BaseResponse<Appointment>>
+
