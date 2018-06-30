@@ -19,15 +19,15 @@
 		BF2D182820E5FFA30001F113 /* BaseTimeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182720E5FFA30001F113 /* BaseTimeTransform.swift */; };
 		BF2D182A20E602D00001F113 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182920E602D00001F113 /* BaseRequest.swift */; };
 		BF2D182C20E629AE0001F113 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182B20E629AE0001F113 /* DatePickerController.swift */; };
-		BF2D182E20E6779D0001F113 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182D20E6779D0001F113 /* TestViewController.swift */; };
-		BF2D183020E677C50001F113 /* TestNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182F20E677C50001F113 /* TestNavigationController.swift */; };
+		BF2D183220E692440001F113 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D183120E692440001F113 /* HomeController.swift */; };
 		BF4C744A20E0E60000C108CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C744920E0E60000C108CC /* AppDelegate.swift */; };
 		BF4C744C20E0E60000C108CC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C744B20E0E60000C108CC /* LoginController.swift */; };
 		BF4C745120E0E60200C108CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4C745020E0E60200C108CC /* Assets.xcassets */; };
 		BF4C745420E0E60200C108CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4C745220E0E60200C108CC /* LaunchScreen.storyboard */; };
-		BFA49BBB20E27E0B0041EF76 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA49BBA20E27E0B0041EF76 /* HomeViewController.swift */; };
-		BFA49BBD20E27FB60041EF76 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA49BBC20E27FB60041EF76 /* TodayViewController.swift */; };
-		BFA49BBF20E27FC40041EF76 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA49BBE20E27FC40041EF76 /* HistoryViewController.swift */; };
+		BF930BBE20E770BF0020FD3A /* AppointmentHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BBD20E770BF0020FD3A /* AppointmentHeader.swift */; };
+		BF930BC220E780AA0020FD3A /* AppointmentTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BC120E780AA0020FD3A /* AppointmentTableHeader.swift */; };
+		BF930BC420E7AEEB0020FD3A /* AudioUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BC320E7AEEB0020FD3A /* AudioUtils.swift */; };
+		BF930BC620E7BB740020FD3A /* ClinicProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BC520E7BB740020FD3A /* ClinicProfileHeader.swift */; };
 		BFA49BC120E27FCD0041EF76 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */; };
 		BFC1E39E20E15763004CCFEC /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39A20E15763004CCFEC /* ResultType.swift */; };
 		BFC1E39F20E15763004CCFEC /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39B20E15763004CCFEC /* BaseResponse.swift */; };
@@ -35,7 +35,6 @@
 		BFC1E3A120E15763004CCFEC /* BaseDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39D20E15763004CCFEC /* BaseDateTransform.swift */; };
 		BFC1E3A420E15771004CCFEC /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E3A220E15770004CCFEC /* BaseService.swift */; };
 		BFC1E3A520E15771004CCFEC /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E3A320E15771004CCFEC /* LoginService.swift */; };
-		BFE6412520E145000024BA22 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6412420E145000024BA22 /* NavigationViewController.swift */; };
 		BFE6412820E146B10024BA22 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6412720E146B10024BA22 /* Extensions.swift */; };
 		BFE6412A20E146FE0024BA22 /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6412920E146FE0024BA22 /* Extensions+UIViewController.swift */; };
 		BFE6413F20E149AB0024BA22 /* BaseJsonObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6413A20E149AA0024BA22 /* BaseJsonObject.swift */; };
@@ -62,17 +61,17 @@
 		BF2D182720E5FFA30001F113 /* BaseTimeTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTimeTransform.swift; sourceTree = "<group>"; };
 		BF2D182920E602D00001F113 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		BF2D182B20E629AE0001F113 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
-		BF2D182D20E6779D0001F113 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		BF2D182F20E677C50001F113 /* TestNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavigationController.swift; sourceTree = "<group>"; };
+		BF2D183120E692440001F113 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		BF4C744620E0E60000C108CC /* CallCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4C744920E0E60000C108CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF4C744B20E0E60000C108CC /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BF4C745020E0E60200C108CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF4C745320E0E60200C108CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF4C745520E0E60200C108CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BFA49BBA20E27E0B0041EF76 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		BFA49BBC20E27FB60041EF76 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		BFA49BBE20E27FC40041EF76 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		BF930BBD20E770BF0020FD3A /* AppointmentHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentHeader.swift; sourceTree = "<group>"; };
+		BF930BC120E780AA0020FD3A /* AppointmentTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTableHeader.swift; sourceTree = "<group>"; };
+		BF930BC320E7AEEB0020FD3A /* AudioUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioUtils.swift; sourceTree = "<group>"; };
+		BF930BC520E7BB740020FD3A /* ClinicProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicProfileHeader.swift; sourceTree = "<group>"; };
 		BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BFC1E39A20E15763004CCFEC /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		BFC1E39B20E15763004CCFEC /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -80,7 +79,6 @@
 		BFC1E39D20E15763004CCFEC /* BaseDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDateTransform.swift; sourceTree = "<group>"; };
 		BFC1E3A220E15770004CCFEC /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		BFC1E3A320E15771004CCFEC /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
-		BFE6412420E145000024BA22 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		BFE6412720E146B10024BA22 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BFE6412920E146FE0024BA22 /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
 		BFE6413A20E149AA0024BA22 /* BaseJsonObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseJsonObject.swift; sourceTree = "<group>"; };
@@ -153,14 +151,9 @@
 			isa = PBXGroup;
 			children = (
 				BF4C744B20E0E60000C108CC /* LoginController.swift */,
-				BFE6412420E145000024BA22 /* NavigationViewController.swift */,
-				BFA49BBA20E27E0B0041EF76 /* HomeViewController.swift */,
-				BFA49BBC20E27FB60041EF76 /* TodayViewController.swift */,
 				BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */,
-				BFA49BBE20E27FC40041EF76 /* HistoryViewController.swift */,
 				BF2D182B20E629AE0001F113 /* DatePickerController.swift */,
-				BF2D182D20E6779D0001F113 /* TestViewController.swift */,
-				BF2D182F20E677C50001F113 /* TestNavigationController.swift */,
+				BF2D183120E692440001F113 /* HomeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -212,6 +205,7 @@
 				BF2D181F20E54E600001F113 /* Extensions+Date.swift */,
 				BF2D181D20E54E1B0001F113 /* Extensions+UIColor.swift */,
 				BFE6412920E146FE0024BA22 /* Extensions+UIViewController.swift */,
+				BF930BC320E7AEEB0020FD3A /* AudioUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -222,6 +216,9 @@
 				BFE6414720E14AF40024BA22 /* BaseButton.swift */,
 				BFE6414920E14B380024BA22 /* BaseTextField.swift */,
 				BF16972D20E531D100211BD0 /* AppointmentCell.swift */,
+				BF930BBD20E770BF0020FD3A /* AppointmentHeader.swift */,
+				BF930BC120E780AA0020FD3A /* AppointmentTableHeader.swift */,
+				BF930BC520E7BB740020FD3A /* ClinicProfileHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -352,24 +349,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF2D182E20E6779D0001F113 /* TestViewController.swift in Sources */,
 				BFC1E3A520E15771004CCFEC /* LoginService.swift in Sources */,
 				BFC1E39F20E15763004CCFEC /* BaseResponse.swift in Sources */,
 				BFC1E3A120E15763004CCFEC /* BaseDateTransform.swift in Sources */,
 				BF2D181E20E54E1B0001F113 /* Extensions+UIColor.swift in Sources */,
-				BF2D183020E677C50001F113 /* TestNavigationController.swift in Sources */,
 				BFC1E39E20E15763004CCFEC /* ResultType.swift in Sources */,
+				BF930BC220E780AA0020FD3A /* AppointmentTableHeader.swift in Sources */,
 				BF2D182020E54E600001F113 /* Extensions+Date.swift in Sources */,
-				BFE6412520E145000024BA22 /* NavigationViewController.swift in Sources */,
-				BFA49BBF20E27FC40041EF76 /* HistoryViewController.swift in Sources */,
 				BF4C744C20E0E60000C108CC /* LoginController.swift in Sources */,
 				BF16972E20E531D100211BD0 /* AppointmentCell.swift in Sources */,
+				BF2D183220E692440001F113 /* HomeController.swift in Sources */,
 				BFC1E3A020E15763004CCFEC /* Clinic.swift in Sources */,
 				BFE6412A20E146FE0024BA22 /* Extensions+UIViewController.swift in Sources */,
-				BFA49BBD20E27FB60041EF76 /* TodayViewController.swift in Sources */,
 				BF4C744A20E0E60000C108CC /* AppDelegate.swift in Sources */,
 				BF2D182420E5FDB70001F113 /* LoginResponse.swift in Sources */,
+				BF930BBE20E770BF0020FD3A /* AppointmentHeader.swift in Sources */,
 				BF2D181A20E542BA0001F113 /* Appointment.swift in Sources */,
+				BF930BC420E7AEEB0020FD3A /* AudioUtils.swift in Sources */,
+				BF930BC620E7BB740020FD3A /* ClinicProfileHeader.swift in Sources */,
 				BFC1E3A420E15771004CCFEC /* BaseService.swift in Sources */,
 				BF2D182A20E602D00001F113 /* BaseRequest.swift in Sources */,
 				BFE6414A20E14B380024BA22 /* BaseTextField.swift in Sources */,
@@ -380,7 +377,6 @@
 				BF2D182620E5FE820001F113 /* WorkingHour.swift in Sources */,
 				BFE6414120E149AB0024BA22 /* Extensions+UIView.swift in Sources */,
 				BF2D182820E5FFA30001F113 /* BaseTimeTransform.swift in Sources */,
-				BFA49BBB20E27E0B0041EF76 /* HomeViewController.swift in Sources */,
 				BFA49BC120E27FCD0041EF76 /* SettingViewController.swift in Sources */,
 				BFE6414320E149AB0024BA22 /* Extensions+UIImageView.swift in Sources */,
 				BF2D182C20E629AE0001F113 /* DatePickerController.swift in Sources */,

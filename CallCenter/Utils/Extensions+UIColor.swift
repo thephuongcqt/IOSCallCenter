@@ -36,6 +36,9 @@ extension UIColor{
         )
     }
     
-    static let mainColor = UIColor(hex: "0x74ad14")
-    static let mainGray = UIColor(hex: "d3cdcb")
+    static let mainColor = UIColor(hex: "2484e8")
+    static let mainGreen = UIColor(hex: "0x74ad14")
+    static let mainBlue = UIColor(hex: "0x74ad14")
+    static let mainGray = UIColor(hex: "f4f4f4")
+    static let mainDarkGray = UIColor(hex: "d3cdcb")
 }

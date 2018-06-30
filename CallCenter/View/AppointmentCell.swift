@@ -49,11 +49,11 @@ class AppointmentCell: UITableViewCell {
     }
     
     func setupLayout(){
-        lblNo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        lblNo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         lblNo.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         lblNo.widthAnchor.constraint(equalToConstant: 25).isActive = true
         
-        lblTime.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        lblTime.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
         lblTime.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true;
         lblTime.widthAnchor.constraint(equalToConstant: 60).isActive = true
         

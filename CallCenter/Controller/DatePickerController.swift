@@ -38,11 +38,20 @@ class DatePickerController: UIViewController {
     
     var date: Date?
     
+    let background: UIView = {
+        var view = UIView()
+        view.backgroundColor = .black
+        view.alpha = 0.7
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray
-        view.isOpaque = false
+        view.backgroundColor = .clear
+        view.isOpaque = false        
         
+        background.frame = view.frame
+        view.addSubview(background)
         view.addSubview(modalView)
         modalView.addSubview(datePicker)
         modalView.addSubview(btnDone)
@@ -78,9 +87,11 @@ class DatePickerController: UIViewController {
     
     @objc func dismiss(sender: Any){
         self.dismiss(animated: true, completion: nil)
+        delegate?.onModalDismiss()
     }
 }
 
 protocol DatePickerModalDelegate {
     func datePickerChanged(picker: UIDatePicker)
+    func onModalDismiss()
 }

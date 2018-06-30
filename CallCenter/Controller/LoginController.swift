@@ -88,7 +88,7 @@ class LoginController: UIViewController {
             let service = LoginService.shared
             let params = BaseRequest.createParamsUserLogin(username: username, password: password)
             
-            view.showHUD(with: "Loging in...")
+            view.showHUD(with: "Đang tải...")
             service.login(with: params, completion: { (result) in
                 self.view.hideHUD()
                 switch result{
@@ -97,7 +97,7 @@ class LoginController: UIViewController {
                             if let username = clinic.username{
                                 Data.setUsername(value: username)
                                 Data.user = clinic
-                                let homeVC = HomeViewController()                                
+                                let homeVC = HomeController()
                                 self.navigationController?.setViewControllers([homeVC], animated: true)
                             } else{
                                 self.showAlert(message: "Đã có lỗi xảy ra khi đăng nhập, vui lòng thử lại sau")

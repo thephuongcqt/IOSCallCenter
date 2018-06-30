@@ -17,38 +17,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let loginController = LoginController()
-        let homeController = HomeViewController()
-//        var rootNavigationController: NavigationViewController
         var rootNavigationController: UINavigationController
         if let username = Data.getUsername(){
             //Move to home page when user is already logged in
-            var testVC = TestViewController()
-            rootNavigationController = TestNavigationController(rootViewController: testVC)
-//            rootNavigationController = NavigationViewController(rootViewController: homeController)
+            let homeVC = HomeController()
+            rootNavigationController = UINavigationController(rootViewController: homeVC)
             //Refresh data
             let service = LoginService.shared
             let params = BaseRequest.createParamsUserInfo(username: username)
             
-//            homeController.view.showHUD(with: "Đang tải")
-            testVC.view.showHUD(with: "Đang tải")
+            homeVC.view.showHUD(with: "Đang tải")
             service.getUserInformation(with: params) { (result) in
-//                homeController.view.hideHUD()
-                testVC.view.hideHUD()
+                homeVC.view.hideHUD()
                 switch result{
                 case .success(let response):
                     if let isSuccess = response.success, isSuccess, let clinic = response.value{
                         Data.user = clinic
+                        homeVC.refreshTitle()
                     } else if let err = response.error{
-                        testVC.showAlert(message: err)
+                        homeVC.showAlert(message: err)
                     }
                 case .failure(error: let err):
-                    testVC.showAlert(message: err.localizedDescription)
+                    homeVC.showAlert(message: err.localizedDescription)
                 }
             }
         } else{
             //move to login page
-            rootNavigationController = NavigationViewController(rootViewController: loginController)
+            rootNavigationController = UINavigationController(rootViewController: LoginController())
         }
         
         window?.rootViewController = rootNavigationController

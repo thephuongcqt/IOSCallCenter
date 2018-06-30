@@ -24,6 +24,24 @@ extension Date{
         return df.string(from: self)
     }
     
+    func getYear() -> String{
+        let df = DateFormatter()
+        df.dateFormat = "yyyy"
+        return df.string(from: self)
+    }
+    
+    func getMonth() -> String{
+        let df = DateFormatter()
+        df.dateFormat = "MM"
+        return df.string(from: self)
+    }
+    
+    func getDay() -> String{
+        let df = DateFormatter()
+        df.dateFormat = "dd"
+        return df.string(from: self)
+    }
+    
     var yesterday: Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
     }

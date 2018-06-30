@@ -8,6 +8,7 @@
 
 import Foundation
 
+//let baseUrl = "https://callcenterapi.herokuapp.com/"
 let baseUrl = "http://27.74.245.84:8080/"
 let loginUrl = "clinic/Login"
 let getInfoUrl = "clinic/getClinicInformation"
