@@ -10,4 +10,5 @@ target 'CallCenter' do
 	pod 'ObjectMapper', :git => 'https://github.com/alecdoconnor/ObjectMapper.git', :branch => 'Swift-4.2'
 	pod 'AlamofireObjectMapper'
 	pod 'MBProgressHUD'
+	pod 'Firebase/Core'
 end

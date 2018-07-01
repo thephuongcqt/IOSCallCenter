@@ -41,4 +41,5 @@ extension UIColor{
     static let mainBlue = UIColor(hex: "0x74ad14")
     static let mainGray = UIColor(hex: "f4f4f4")
     static let mainDarkGray = UIColor(hex: "d3cdcb")
+    static let mainBlack = UIColor(r: 0, g: 122, b: 255)
 }

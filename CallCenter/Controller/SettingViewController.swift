@@ -9,8 +9,11 @@
 import UIKit
 
 class SettingViewController: UIViewController{
-    enum SECTION: Int {
-        case INFORMATION = 0, LOGOUT
+    enum Section: Int {
+        case information = 0, logout
+    }
+    enum Setting: Int{
+        case workingHour = 0, greetingMessage, information, changeLogo, buyLicense
     }
     var settingItems: [String] = ["Cài đặt giờ làm việc", "Cài đặt lời chào", "Thay đổi thông tin", "Thay đổi logo", "Gia hạn tài khoản"]
     
@@ -48,7 +51,7 @@ class SettingViewController: UIViewController{
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == SECTION.INFORMATION.rawValue{
+        if section == Section.information.rawValue{
             return 250
         } else{
             return 40
@@ -56,7 +59,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == SECTION.INFORMATION.rawValue{
+        if section == Section.information.rawValue{
             let view = ClinicProfileHeader()
             view.backgroundColor = .mainGray
             if let user = Data.user{
@@ -84,7 +87,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == SECTION.INFORMATION.rawValue{
+        if section == Section.information.rawValue{
             return settingItems.count
         } else{
             return 1
@@ -93,7 +96,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId")!
-        if indexPath.section == SECTION.INFORMATION.rawValue{
+        if indexPath.section == Section.information.rawValue{
             cell.textLabel?.text = settingItems[indexPath.row]
             cell.imageView?.image = #imageLiteral(resourceName: "icon_folder")
             return cell
@@ -106,8 +109,25 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == SECTION.LOGOUT.rawValue{
+        if indexPath.section == Section.logout.rawValue{
             handleLogout()
+        } else{
+            switch indexPath.row{
+            case Setting.workingHour.rawValue:
+                print(indexPath.row)
+                let workingHourVC = WorkingHourController()
+                navigationItem.backBarButtonItem = UIBarButtonItem(title: backTitle, style: .plain, target: workingHourVC, action: nil)
+                navigationController?.pushViewController(workingHourVC, animated: true)
+            case Setting.greetingMessage.rawValue:
+                print(indexPath.row)
+                print(45)
+            case Setting.changeLogo.rawValue:
+                print(indexPath.row)
+            case Setting.buyLicense.rawValue:
+                print(indexPath.row)
+            default:
+                print("default")
+            }
         }
     }
 }

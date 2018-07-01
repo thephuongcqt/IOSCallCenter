@@ -28,6 +28,12 @@
 		BF930BC220E780AA0020FD3A /* AppointmentTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BC120E780AA0020FD3A /* AppointmentTableHeader.swift */; };
 		BF930BC420E7AEEB0020FD3A /* AudioUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BC320E7AEEB0020FD3A /* AudioUtils.swift */; };
 		BF930BC620E7BB740020FD3A /* ClinicProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BC520E7BB740020FD3A /* ClinicProfileHeader.swift */; };
+		BF930BC820E7E1160020FD3A /* WorkingHourController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BC720E7E1160020FD3A /* WorkingHourController.swift */; };
+		BF930BCE20E7EB8E0020FD3A /* DurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BCD20E7EB8E0020FD3A /* DurationCell.swift */; };
+		BF930BD020E7F39F0020FD3A /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BCF20E7F39F0020FD3A /* DayCell.swift */; };
+		BF930BD220E7FA050020FD3A /* DayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BD120E7FA050020FD3A /* DayHeader.swift */; };
+		BF930BD420E879950020FD3A /* DaysConfigController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BD320E879950020FD3A /* DaysConfigController.swift */; };
+		BF930BD620E880AD0020FD3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF930BD520E880AD0020FD3A /* GoogleService-Info.plist */; };
 		BFA49BC120E27FCD0041EF76 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */; };
 		BFC1E39E20E15763004CCFEC /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39A20E15763004CCFEC /* ResultType.swift */; };
 		BFC1E39F20E15763004CCFEC /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39B20E15763004CCFEC /* BaseResponse.swift */; };
@@ -72,6 +78,12 @@
 		BF930BC120E780AA0020FD3A /* AppointmentTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTableHeader.swift; sourceTree = "<group>"; };
 		BF930BC320E7AEEB0020FD3A /* AudioUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioUtils.swift; sourceTree = "<group>"; };
 		BF930BC520E7BB740020FD3A /* ClinicProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicProfileHeader.swift; sourceTree = "<group>"; };
+		BF930BC720E7E1160020FD3A /* WorkingHourController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHourController.swift; sourceTree = "<group>"; };
+		BF930BCD20E7EB8E0020FD3A /* DurationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationCell.swift; sourceTree = "<group>"; };
+		BF930BCF20E7F39F0020FD3A /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
+		BF930BD120E7FA050020FD3A /* DayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeader.swift; sourceTree = "<group>"; };
+		BF930BD320E879950020FD3A /* DaysConfigController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysConfigController.swift; sourceTree = "<group>"; };
+		BF930BD520E880AD0020FD3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BFC1E39A20E15763004CCFEC /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		BFC1E39B20E15763004CCFEC /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -133,6 +145,7 @@
 		BF4C744820E0E60000C108CC /* CallCenter */ = {
 			isa = PBXGroup;
 			children = (
+				BF930BD520E880AD0020FD3A /* GoogleService-Info.plist */,
 				BFC1E39820E15763004CCFEC /* Model */,
 				BFC1E39720E15413004CCFEC /* Services */,
 				BFE6414620E14ADC0024BA22 /* View */,
@@ -153,9 +166,48 @@
 				BF4C744B20E0E60000C108CC /* LoginController.swift */,
 				BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */,
 				BF2D182B20E629AE0001F113 /* DatePickerController.swift */,
+				BF930BC720E7E1160020FD3A /* WorkingHourController.swift */,
 				BF2D183120E692440001F113 /* HomeController.swift */,
+				BF930BD320E879950020FD3A /* DaysConfigController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF930BC920E7E4110020FD3A /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				BF16972D20E531D100211BD0 /* AppointmentCell.swift */,
+				BF930BBD20E770BF0020FD3A /* AppointmentHeader.swift */,
+				BF930BC120E780AA0020FD3A /* AppointmentTableHeader.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		BF930BCA20E7E4710020FD3A /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				BF930BC520E7BB740020FD3A /* ClinicProfileHeader.swift */,
+			);
+			path = SettingView;
+			sourceTree = "<group>";
+		};
+		BF930BCB20E7E4830020FD3A /* BaseControl */ = {
+			isa = PBXGroup;
+			children = (
+				BFE6414720E14AF40024BA22 /* BaseButton.swift */,
+				BFE6414920E14B380024BA22 /* BaseTextField.swift */,
+			);
+			path = BaseControl;
+			sourceTree = "<group>";
+		};
+		BF930BCC20E7EB6B0020FD3A /* WorkingHourView */ = {
+			isa = PBXGroup;
+			children = (
+				BF930BCD20E7EB8E0020FD3A /* DurationCell.swift */,
+				BF930BCF20E7F39F0020FD3A /* DayCell.swift */,
+				BF930BD120E7FA050020FD3A /* DayHeader.swift */,
+			);
+			path = WorkingHourView;
 			sourceTree = "<group>";
 		};
 		BFC1E39720E15413004CCFEC /* Services */ = {
@@ -213,12 +265,10 @@
 		BFE6414620E14ADC0024BA22 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BFE6414720E14AF40024BA22 /* BaseButton.swift */,
-				BFE6414920E14B380024BA22 /* BaseTextField.swift */,
-				BF16972D20E531D100211BD0 /* AppointmentCell.swift */,
-				BF930BBD20E770BF0020FD3A /* AppointmentHeader.swift */,
-				BF930BC120E780AA0020FD3A /* AppointmentTableHeader.swift */,
-				BF930BC520E7BB740020FD3A /* ClinicProfileHeader.swift */,
+				BF930BCC20E7EB6B0020FD3A /* WorkingHourView */,
+				BF930BCB20E7E4830020FD3A /* BaseControl */,
+				BF930BCA20E7E4710020FD3A /* SettingView */,
+				BF930BC920E7E4110020FD3A /* HomeView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +344,7 @@
 			files = (
 				BF4C745420E0E60200C108CC /* LaunchScreen.storyboard in Resources */,
 				BF4C745120E0E60200C108CC /* Assets.xcassets in Resources */,
+				BF930BD620E880AD0020FD3A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,15 +360,19 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-CallCenter/Pods-CallCenter-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -351,6 +406,7 @@
 			files = (
 				BFC1E3A520E15771004CCFEC /* LoginService.swift in Sources */,
 				BFC1E39F20E15763004CCFEC /* BaseResponse.swift in Sources */,
+				BF930BD020E7F39F0020FD3A /* DayCell.swift in Sources */,
 				BFC1E3A120E15763004CCFEC /* BaseDateTransform.swift in Sources */,
 				BF2D181E20E54E1B0001F113 /* Extensions+UIColor.swift in Sources */,
 				BFC1E39E20E15763004CCFEC /* ResultType.swift in Sources */,
@@ -364,17 +420,21 @@
 				BF4C744A20E0E60000C108CC /* AppDelegate.swift in Sources */,
 				BF2D182420E5FDB70001F113 /* LoginResponse.swift in Sources */,
 				BF930BBE20E770BF0020FD3A /* AppointmentHeader.swift in Sources */,
+				BF930BD420E879950020FD3A /* DaysConfigController.swift in Sources */,
 				BF2D181A20E542BA0001F113 /* Appointment.swift in Sources */,
 				BF930BC420E7AEEB0020FD3A /* AudioUtils.swift in Sources */,
 				BF930BC620E7BB740020FD3A /* ClinicProfileHeader.swift in Sources */,
 				BFC1E3A420E15771004CCFEC /* BaseService.swift in Sources */,
 				BF2D182A20E602D00001F113 /* BaseRequest.swift in Sources */,
 				BFE6414A20E14B380024BA22 /* BaseTextField.swift in Sources */,
+				BF930BC820E7E1160020FD3A /* WorkingHourController.swift in Sources */,
 				BFE6412820E146B10024BA22 /* Extensions.swift in Sources */,
 				BF2D182220E5C3AE0001F113 /* Data.swift in Sources */,
+				BF930BCE20E7EB8E0020FD3A /* DurationCell.swift in Sources */,
 				BFE6414220E149AB0024BA22 /* Extensions+String.swift in Sources */,
 				BFE6413F20E149AB0024BA22 /* BaseJsonObject.swift in Sources */,
 				BF2D182620E5FE820001F113 /* WorkingHour.swift in Sources */,
+				BF930BD220E7FA050020FD3A /* DayHeader.swift in Sources */,
 				BFE6414120E149AB0024BA22 /* Extensions+UIView.swift in Sources */,
 				BF2D182820E5FFA30001F113 /* BaseTimeTransform.swift in Sources */,
 				BFA49BC120E27FCD0041EF76 /* SettingViewController.swift in Sources */,

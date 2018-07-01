@@ -87,11 +87,11 @@ class DatePickerController: UIViewController {
     
     @objc func dismiss(sender: Any){
         self.dismiss(animated: true, completion: nil)
-        delegate?.onModalDismiss()
+        delegate?.onModalDismiss(picker: datePicker)
     }
 }
 
 protocol DatePickerModalDelegate {
     func datePickerChanged(picker: UIDatePicker)
-    func onModalDismiss()
+    func onModalDismiss(picker: UIDatePicker)
 }

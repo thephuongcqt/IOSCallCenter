@@ -25,3 +25,5 @@ let dateTransformFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
 let timeTransformFormat = "HH:mm:ss"
 let timeFormat = "HH:mm"
 let errorNetworking = "Network error, please try again"
+
+let backTitle = "Trở về"

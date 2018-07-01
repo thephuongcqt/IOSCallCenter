@@ -32,6 +32,7 @@ class HomeController: UIViewController{
         sc.dimsBackgroundDuringPresentation = false
         sc.searchBar.sizeToFit()
         sc.searchBar.delegate = self
+        sc.searchBar.placeholder = "Tìm kiếm bệnh nhân"
         return sc
     }()
     
@@ -97,7 +98,7 @@ class HomeController: UIViewController{
     @objc func rightBarButtonSelected(){
         print("right button onclick")
         let settingVC = SettingViewController()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Trở về", style: .plain, target: settingVC, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: backTitle, style: .plain, target: settingVC, action: nil)
         navigationController?.pushViewController(settingVC, animated: true)
     }
     
@@ -182,7 +183,7 @@ extension HomeController: DatePickerModalDelegate{
         date = picker.date
     }
     
-    func onModalDismiss() {
+    func onModalDismiss(picker: UIDatePicker) {
         updateDatePickerText()
         loadAppointments()
     }
