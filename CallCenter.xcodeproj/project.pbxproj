@@ -14,7 +14,7 @@
 		BF2D181E20E54E1B0001F113 /* Extensions+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D181D20E54E1B0001F113 /* Extensions+UIColor.swift */; };
 		BF2D182020E54E600001F113 /* Extensions+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D181F20E54E600001F113 /* Extensions+Date.swift */; };
 		BF2D182220E5C3AE0001F113 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182120E5C3AE0001F113 /* Data.swift */; };
-		BF2D182420E5FDB70001F113 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182320E5FDB70001F113 /* LoginResponse.swift */; };
+		BF2D182420E5FDB70001F113 /* BaseSingleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182320E5FDB70001F113 /* BaseSingleResponse.swift */; };
 		BF2D182620E5FE820001F113 /* WorkingHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182520E5FE820001F113 /* WorkingHour.swift */; };
 		BF2D182820E5FFA30001F113 /* BaseTimeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182720E5FFA30001F113 /* BaseTimeTransform.swift */; };
 		BF2D182A20E602D00001F113 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2D182920E602D00001F113 /* BaseRequest.swift */; };
@@ -38,6 +38,8 @@
 		BF930BDB20EA57410020FD3A /* LicenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BDA20EA57410020FD3A /* LicenseCell.swift */; };
 		BF930BDD20EA67260020FD3A /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BDC20EA67260020FD3A /* License.swift */; };
 		BF930BDF20EA73220020FD3A /* LicenseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BDE20EA73220020FD3A /* LicenseService.swift */; };
+		BF930BE320EA87200020FD3A /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BE220EA87200020FD3A /* PaymentService.swift */; };
+		BF930BE520EA88410020FD3A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BE420EA88410020FD3A /* Token.swift */; };
 		BFA49BC120E27FCD0041EF76 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */; };
 		BFC1E39E20E15763004CCFEC /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39A20E15763004CCFEC /* ResultType.swift */; };
 		BFC1E39F20E15763004CCFEC /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39B20E15763004CCFEC /* BaseResponse.swift */; };
@@ -66,7 +68,7 @@
 		BF2D181D20E54E1B0001F113 /* Extensions+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIColor.swift"; sourceTree = "<group>"; };
 		BF2D181F20E54E600001F113 /* Extensions+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+Date.swift"; sourceTree = "<group>"; };
 		BF2D182120E5C3AE0001F113 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		BF2D182320E5FDB70001F113 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		BF2D182320E5FDB70001F113 /* BaseSingleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSingleResponse.swift; sourceTree = "<group>"; };
 		BF2D182520E5FE820001F113 /* WorkingHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHour.swift; sourceTree = "<group>"; };
 		BF2D182720E5FFA30001F113 /* BaseTimeTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTimeTransform.swift; sourceTree = "<group>"; };
 		BF2D182920E602D00001F113 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
@@ -92,6 +94,8 @@
 		BF930BDA20EA57410020FD3A /* LicenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseCell.swift; sourceTree = "<group>"; };
 		BF930BDC20EA67260020FD3A /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		BF930BDE20EA73220020FD3A /* LicenseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseService.swift; sourceTree = "<group>"; };
+		BF930BE220EA87200020FD3A /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
+		BF930BE420EA88410020FD3A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BFC1E39A20E15763004CCFEC /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		BFC1E39B20E15763004CCFEC /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -230,7 +234,7 @@
 		BF930BE020EA74B30020FD3A /* ApiBaseModel */ = {
 			isa = PBXGroup;
 			children = (
-				BF2D182320E5FDB70001F113 /* LoginResponse.swift */,
+				BF2D182320E5FDB70001F113 /* BaseSingleResponse.swift */,
 				BFC1E39A20E15763004CCFEC /* ResultType.swift */,
 				BFC1E39B20E15763004CCFEC /* BaseResponse.swift */,
 				BF2D182920E602D00001F113 /* BaseRequest.swift */,
@@ -254,6 +258,7 @@
 				BFC1E3A320E15771004CCFEC /* LoginService.swift */,
 				BF2D181B20E543E80001F113 /* AppointmentService.swift */,
 				BF930BDE20EA73220020FD3A /* LicenseService.swift */,
+				BF930BE220EA87200020FD3A /* PaymentService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 				BF2D181920E542BA0001F113 /* Appointment.swift */,
 				BF2D182520E5FE820001F113 /* WorkingHour.swift */,
 				BF930BDC20EA67260020FD3A /* License.swift */,
+				BF930BE420EA88410020FD3A /* Token.swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -396,6 +402,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-CallCenter/Pods-CallCenter-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework",
+				"${BUILT_PRODUCTS_DIR}/BraintreeDropIn/BraintreeDropIn.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -405,6 +413,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Braintree.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BraintreeDropIn.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -448,6 +458,7 @@
 				BFC1E39E20E15763004CCFEC /* ResultType.swift in Sources */,
 				BF930BC220E780AA0020FD3A /* AppointmentTableHeader.swift in Sources */,
 				BF2D182020E54E600001F113 /* Extensions+Date.swift in Sources */,
+				BF930BE320EA87200020FD3A /* PaymentService.swift in Sources */,
 				BF4C744C20E0E60000C108CC /* LoginController.swift in Sources */,
 				BF930BDF20EA73220020FD3A /* LicenseService.swift in Sources */,
 				BF930BDD20EA67260020FD3A /* License.swift in Sources */,
@@ -456,8 +467,9 @@
 				BFC1E3A020E15763004CCFEC /* Clinic.swift in Sources */,
 				BFE6412A20E146FE0024BA22 /* Extensions+UIViewController.swift in Sources */,
 				BF4C744A20E0E60000C108CC /* AppDelegate.swift in Sources */,
-				BF2D182420E5FDB70001F113 /* LoginResponse.swift in Sources */,
+				BF2D182420E5FDB70001F113 /* BaseSingleResponse.swift in Sources */,
 				BF930BBE20E770BF0020FD3A /* AppointmentHeader.swift in Sources */,
+				BF930BE520EA88410020FD3A /* Token.swift in Sources */,
 				BF930BD420E879950020FD3A /* DaysConfigController.swift in Sources */,
 				BF2D181A20E542BA0001F113 /* Appointment.swift in Sources */,
 				BF930BC420E7AEEB0020FD3A /* AudioUtils.swift in Sources */,

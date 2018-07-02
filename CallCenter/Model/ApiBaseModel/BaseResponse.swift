@@ -26,7 +26,7 @@ class BaseResponse<T: Mappable>: Mappable{
 
 typealias completionHandler<T> = (T) -> ()
 
-typealias loginResultType = ResultType<LoginResponse<Clinic>>
+typealias loginResultType = ResultType<BaseSingleResponse<Clinic>>
 typealias getAppointmentsType = ResultType<BaseResponse<Appointment>>
 typealias getLicenseType = ResultType<BaseResponse<License>>
-
+typealias getPaymentTokenType = ResultType<BaseSingleResponse<Token>>

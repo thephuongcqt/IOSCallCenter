@@ -11,4 +11,6 @@ target 'CallCenter' do
 	pod 'AlamofireObjectMapper'
 	pod 'MBProgressHUD'
 	pod 'Firebase/Core'
+    	pod 'BraintreeDropIn'
+    	pod 'Braintree/PayPal'
 end

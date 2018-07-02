@@ -3,6 +3,35 @@ PODS:
   - AlamofireObjectMapper (5.0.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.0)
+  - Braintree/Card (4.15.0):
+    - Braintree/Core
+  - Braintree/Core (4.15.0)
+  - Braintree/PaymentFlow (4.15.0):
+    - Braintree/Card
+    - Braintree/Core
+  - Braintree/PayPal (4.15.0):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.15.0):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.15.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.15.0)
+  - Braintree/UnionPay (4.15.0):
+    - Braintree/Card
+    - Braintree/Core
+  - BraintreeDropIn (6.1.0):
+    - BraintreeDropIn/DropIn (= 6.1.0)
+  - BraintreeDropIn/DropIn (6.1.0):
+    - Braintree/Card (~> 4.11)
+    - Braintree/Core (~> 4.11)
+    - Braintree/PaymentFlow (~> 4.11)
+    - Braintree/UnionPay (~> 4.11)
+    - BraintreeDropIn/UIKit
+  - BraintreeDropIn/UIKit (6.1.0)
   - Firebase/Core (5.0.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.0.0)
@@ -31,6 +60,8 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper
+  - Braintree/PayPal
+  - BraintreeDropIn
   - Firebase/Core
   - MBProgressHUD
   - ObjectMapper (from `https://github.com/alecdoconnor/ObjectMapper.git`, branch `Swift-4.2`)
@@ -39,6 +70,8 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireObjectMapper
+    - Braintree
+    - BraintreeDropIn
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -60,6 +93,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
+  Braintree: 5f10816f455ffd79c411e6d22a177846971f3677
+  BraintreeDropIn: 2e8bba4facf6cc925176637030454d8308223b95
   Firebase: d6861c2059d8c32d1e6dd8932e22ada346d90a3a
   FirebaseAnalytics: 19812b49fa5f283dd6b23edf8a14b5d477029ab8
   FirebaseCore: cafc814b2d84fc8733f09e653041cc2165332ad7
@@ -69,6 +104,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   ObjectMapper: 5cccd2de6f253eda859df8116a5a554d9769e859
 
-PODFILE CHECKSUM: 03744bffeb401c4edf14061daec6d2acd09e8014
+PODFILE CHECKSUM: 41c9ad30327dd4a00d5466bcdd2088c0d36d7e97
 
 COCOAPODS: 1.5.2

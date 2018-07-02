@@ -71,7 +71,7 @@ class LicenseCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupLayout(){
+    func setupLayout(){        
         addSubview(lblNameTitle)
         addSubview(lblName)
         addSubview(lblPrice)

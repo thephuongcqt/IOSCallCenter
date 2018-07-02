@@ -14,6 +14,7 @@ let loginUrl = "clinic/Login"
 let getInfoUrl = "clinic/getClinicInformation"
 let appointmentsUrl = "appointment/getAppointmentsListByDate"
 let licenseUrl = "license/getAllLicense"
+let getPaymentTokenUrl = "paypal/getToken"
 
 let keyUsername = "username"
 let paramUsername = "username"

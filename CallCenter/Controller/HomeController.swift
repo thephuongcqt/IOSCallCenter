@@ -95,8 +95,7 @@ class HomeController: UIViewController{
         present(datePickerVC, animated: true, completion: nil)
     }
     
-    @objc func rightBarButtonSelected(){
-        print("right button onclick")
+    @objc func rightBarButtonSelected(){    
         let settingVC = SettingViewController()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: backTitle, style: .plain, target: settingVC, action: nil)
         navigationController?.pushViewController(settingVC, animated: true)

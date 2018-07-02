@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Braintree
+import BraintreeDropIn
 
 class LicenseController: UITableViewController {
 
@@ -58,16 +60,70 @@ class LicenseController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "licenseCell", for: indexPath) as! LicenseCell
-        let license = licenses![indexPath.row]
-        cell.setLicenseName(name: license.name ?? "")
-        cell.setLicenseDuration(duration: license.duration ?? 0)
-        cell.setLicensePrice(price: license.price ?? 0)
-        cell.setLicenseDescription(description: license.description ?? "")
+        if let licenses = licenses{
+            let license = licenses[indexPath.row]
+            cell.setLicenseName(name: license.name ?? "")
+            cell.setLicenseDuration(duration: license.duration ?? 0)
+            cell.setLicensePrice(price: license.price ?? 0)
+            cell.setLicenseDescription(description: license.description ?? "")
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let licenses = licenses{
+            let selectedLicense = licenses[indexPath.row]
+            buyLicense(license: selectedLicense)
+        }
+    }
+    
+    func buyLicense(license: License){
+        let service = PaymentService.shared
+        view.showHUD(with: "Đang tải")
+        service.getClientToken { (result) in
+            self.view.hideHUD()
+            switch result{
+            case .success(let response):
+                if let isSuccess = response.success, isSuccess, let tokenObj = response.value{
+                    self.showDropIn(clientTokenOrTokenizationKey: tokenObj.clientToken)
+                } else if let err = response.error{
+                    self.showAlert(message: err)
+                }
+            case .failure(error: let err):
+                self.showAlert(message: err.localizedDescription)
+            }
+        }
+        
+    }
+    
+    func showDropIn(clientTokenOrTokenizationKey: String) {
+        let request =  BTDropInRequest()
+        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
+        { (controller, result, error) in
+            if (error != nil) {
+                print("ERROR")
+            } else if (result?.isCancelled == true) {
+                print("CANCELLED")
+            } else if let result = result {
+                if result.paymentOptionType == .payPal{
+                    self.showAlert(message: "success")
+                    print(result)
+                } else{
+                    self.showAlert(message: "Hiện tại hệ thống chỉ hỗ trợ thanh toán bằng Paypal, Xin vui lòng thử lại")
+                }
+                // Use the BTDropInResult properties to update your UI
+                // result.paymentOptionType
+                // result.paymentMethod
+                // result.paymentIcon
+                // result.paymentDescription
+            }
+            controller.dismiss(animated: true, completion: nil)
+        }
+        self.present(dropIn!, animated: true, completion: nil)
     }
 
     /*
