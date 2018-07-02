@@ -9,37 +9,55 @@
 import Foundation
 
 extension Date{
+    static let df: DateFormatter = {
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "vi_VN")
+        df.timeZone = TimeZone(secondsFromGMT: 7)
+        return df
+    }()
+    
+    init(value: String, format: String) {
+        Date.df.dateFormat = format
+        self =  Date.df.date(from: value) ?? Date()
+    }
+    
+    static let timeFormat = "HH:mm"
+    
+    func getDate(fromString date: String, with format: String) -> Date?{
+        Date.df.dateFormat = format
+        return Date.df.date(from: date)
+    }
+    
+    func toWorkingTime() -> String{
+        Date.df.dateFormat = Date.timeFormat
+        return Date.df.string(from: self)
+    }
     
     func toTimeString() -> String{
-        let df = DateFormatter()
-        df.dateFormat = "HH"
-        var result = df.string(from: self)
-        df.dateFormat = "mm"
-        result += "h\(df.string(from: self))"
+        Date.df.dateFormat = "HH"
+        var result = Date.df.string(from: self)
+        Date.df.dateFormat = "mm"
+        result += "h\(Date.df.string(from: self))"
         return result
     }
     func toDateString(with format: String) -> String{
-        let df = DateFormatter()
-        df.dateFormat = format
-        return df.string(from: self)
+        Date.df.dateFormat = format
+        return Date.df.string(from: self)
     }
     
     func getYear() -> String{
-        let df = DateFormatter()
-        df.dateFormat = "yyyy"
-        return df.string(from: self)
+        Date.df.dateFormat = "yyyy"
+        return Date.df.string(from: self)
     }
     
     func getMonth() -> String{
-        let df = DateFormatter()
-        df.dateFormat = "MM"
-        return df.string(from: self)
+        Date.df.dateFormat = "MM"
+        return Date.df.string(from: self)
     }
     
     func getDay() -> String{
-        let df = DateFormatter()
-        df.dateFormat = "dd"
-        return df.string(from: self)
+        Date.df.dateFormat = "dd"
+        return Date.df.string(from: self)
     }
     
     var yesterday: Date {

@@ -27,3 +27,8 @@ let timeFormat = "HH:mm"
 let errorNetworking = "Network error, please try again"
 
 let backTitle = "Trở về"
+
+let defaultStartWorking = Date(value: "17:00:00", format: timeTransformFormat)
+let defaultEndWorking = Date(value: "21:00:00", format: timeTransformFormat)
+let defaultDuration = Date(value: "00:30:00", format: timeTransformFormat)
+let offDayTime = "--:--"

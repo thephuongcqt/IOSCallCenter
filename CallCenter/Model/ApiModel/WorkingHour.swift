@@ -19,6 +19,13 @@ class WorkingHour: Mappable {
     
     }
     
+    init(start: Date?, end: Date?, applyDate: Int?, isDayOff: Int?){
+        self.startWorking = start
+        self.endWorking = end
+        self.applyDate = applyDate
+        self.isDayOff = isDayOff
+    }
+    
     func mapping(map: Map) {
         startWorking <- (map["startWorking"], BaseTimeTransform())
         endWorking <- (map["endWorking"], BaseTimeTransform())

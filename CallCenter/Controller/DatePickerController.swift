@@ -31,7 +31,7 @@ class DatePickerController: UIViewController {
         var button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Xác nhận", for: .normal)
-        button.addTarget(self, action: #selector(dismiss(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(onButtonDoneSelected), for: .touchUpInside)
         button.backgroundColor = .mainColor
         return button
     }()
@@ -57,6 +57,8 @@ class DatePickerController: UIViewController {
         modalView.addSubview(btnDone)
         
         datePicker.setDate(date ?? Date(), animated: true)
+        datePicker.locale = Locale(identifier: "vi_VN")
+        datePicker.timeZone = TimeZone(secondsFromGMT: 7)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismiss(sender:)))
         view.addGestureRecognizer(tapGesture)
@@ -80,18 +82,23 @@ class DatePickerController: UIViewController {
         btnDone.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
-    @objc func datePickerChanged(picker: UIDatePicker){
-        self.date = picker.date
+    @objc func datePickerChanged(picker: UIDatePicker){        
         delegate?.datePickerChanged(picker: picker)
     }
     
     @objc func dismiss(sender: Any){
-        self.dismiss(animated: true, completion: nil)
-        delegate?.onModalDismiss(picker: datePicker)
+        delegate?.onModalDismiss()
+        self.dismiss(animated: true, completion: nil)        
+    }
+    
+    @objc func onButtonDoneSelected(){
+        delegate?.onModalDone(date: datePicker.date)
+        dismiss(sender: "")
     }
 }
 
 protocol DatePickerModalDelegate {
     func datePickerChanged(picker: UIDatePicker)
-    func onModalDismiss(picker: UIDatePicker)
+    func onModalDismiss()
+    func onModalDone(date: Date)
 }

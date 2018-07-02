@@ -18,7 +18,7 @@ class Clinic: Mappable {
     var email: String?
     var address: String?
     var clinicName: String?
-    var examinationDuration: String?
+    var examinationDuration: Date?
     var expiredLicense: Date?
     var currentTime: Date?
     var imageURL: String?
@@ -37,7 +37,7 @@ class Clinic: Mappable {
         fullName <- map["fullName"]
         email <- map["email"]
         clinicName <- map["clinicName"]
-        examinationDuration <- map["examinationDuration"]
+        examinationDuration <- (map["examinationDuration"], BaseTimeTransform())
         expiredLicense <- (map["expiredLicense"], BaseDateTransform())
         currentTime <- (map["currentTime"], BaseDateTransform())
         imageURL <- map["imageURL"]

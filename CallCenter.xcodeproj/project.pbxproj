@@ -127,8 +127,8 @@
 		BF4C743D20E0E60000C108CC = {
 			isa = PBXGroup;
 			children = (
-				BF4C744820E0E60000C108CC /* CallCenter */,
 				BF4C744720E0E60000C108CC /* Products */,
+				BF4C744820E0E60000C108CC /* CallCenter */,
 				D36FE25EFAD88B09383DEDDE /* Pods */,
 				B3AFC1B941FBD9648D6C3716 /* Frameworks */,
 			);

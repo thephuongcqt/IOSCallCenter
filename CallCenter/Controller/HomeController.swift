@@ -125,7 +125,7 @@ class HomeController: UIViewController{
     
     func loadAppointments(){
         let service = AppointmentService.shared
-        let params = BaseRequest.createParamsGetAppointmentByDate(username: Data.getUsername() ?? "", date: date.yesterday)
+        let params = BaseRequest.createParamsGetAppointmentByDate(username: Data.getUsername() ?? "", date: date)
         
         view.showHUD(with: "Đang tải danh sách lịch hẹn")
         service.getAppointments(with: params as [String : Any]) { (result) in
@@ -179,14 +179,19 @@ extension HomeController: UISearchControllerDelegate, UISearchBarDelegate{
 }
 
 extension HomeController: DatePickerModalDelegate{
+    func onModalDismiss() {
+        updateDatePickerText()
+        loadAppointments()
+    }
+    
+    func onModalDone(date: Date) {
+
+    }
+    
     func datePickerChanged(picker: UIDatePicker) {
         date = picker.date
     }
     
-    func onModalDismiss(picker: UIDatePicker) {
-        updateDatePickerText()
-        loadAppointments()
-    }
 }
 
 extension HomeController: UITableViewDataSource, UITableViewDelegate{

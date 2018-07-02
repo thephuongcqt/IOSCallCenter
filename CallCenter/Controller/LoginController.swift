@@ -23,8 +23,9 @@ class LoginController: UIViewController {
     }()
     
     let txtPassword: BaseTextField = {
-       let tf = BaseTextField()
+        let tf = BaseTextField()
         tf.placeholder = "Mật khẩu"
+        tf.isSecureTextEntry = true
         return tf
     }()
     
