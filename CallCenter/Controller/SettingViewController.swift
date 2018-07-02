@@ -124,7 +124,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             case Setting.changeLogo.rawValue:
                 print(indexPath.row)
             case Setting.buyLicense.rawValue:
-                print(indexPath.row)
+                let licenseVC = LicenseController()
+                navigationItem.backBarButtonItem = UIBarButtonItem(title: backTitle, style: .plain, target: licenseVC, action: nil)
+                navigationController?.pushViewController(licenseVC, animated: true)
             default:
                 print("default")
             }

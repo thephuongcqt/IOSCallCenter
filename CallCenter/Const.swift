@@ -13,6 +13,7 @@ let baseUrl = "http://27.74.245.84:8080/"
 let loginUrl = "clinic/Login"
 let getInfoUrl = "clinic/getClinicInformation"
 let appointmentsUrl = "appointment/getAppointmentsListByDate"
+let licenseUrl = "license/getAllLicense"
 
 let keyUsername = "username"
 let paramUsername = "username"

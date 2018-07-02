@@ -10,27 +10,24 @@ import Foundation
 import Alamofire
 import AlamofireObjectMapper
 
-class LoginService{
+class LoginService: BaseService{
     
     static let shared = LoginService()
-    private init(){
+    private override init(){
+        super.init()
     }    
     
     func login(with params: [String: Any], completion: @escaping completionHandler<loginResultType>){
-        
-        let service = BaseService.shared
-        if let url = service.getAbsoluteUrl(from: loginUrl){
-            service.postParams(with: url, parameters: params, completion: { (result: loginResultType) in
+        if let url = getAbsoluteUrl(from: loginUrl){
+            postParams(with: url, parameters: params, completion: { (result: loginResultType) in
                 completion(result)
             })
         }
     }
     
     func getUserInformation(with params: [String: Any], completion: @escaping completionHandler<loginResultType>){
-        
-        let service = BaseService.shared
-        if let url = service.getAbsoluteUrl(from: getInfoUrl){
-            service.postParams(with: url, parameters: params, completion: { (result: loginResultType) in
+        if let url = getAbsoluteUrl(from: getInfoUrl){
+            postParams(with: url, parameters: params, completion: { (result: loginResultType) in
                 completion(result)
             })
         }

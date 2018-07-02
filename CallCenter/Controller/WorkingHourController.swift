@@ -48,7 +48,7 @@ class WorkingHourController: UIViewController {
     
     var selectedButton: UIButton?
     
-    //MARK: Controller lifecycle
+    //MARK: - Controller lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,7 @@ class WorkingHourController: UIViewController {
         setupTableView()
     }
     
-    //MARK: Handle UI
+    //MARK: - Handle UI
     
     func setupTableView(){
         view.addSubview(tableView)
@@ -70,7 +70,7 @@ class WorkingHourController: UIViewController {
         tableView.register(DayCell.self, forCellReuseIdentifier: "dayCell")
     }
     
-    //MARK: Handle event
+    //MARK: - Handle event
     @objc func onButtonSelected(button: UIButton){
         var currentTime = Date()
         let isStartWorking = button.tag % 2 == 0
@@ -112,7 +112,7 @@ class WorkingHourController: UIViewController {
         updateDayCell(cell: cells[day]!, day: day)
     }
     
-    //MARK: Handle data
+    //MARK: - Handle data
     func getWorkingHour(day: Int) -> WorkingHour{
         for workingHour in workingHours{
             if workingHour.applyDate == day{

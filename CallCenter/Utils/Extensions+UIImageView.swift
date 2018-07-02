@@ -33,11 +33,7 @@ extension UIImageView{
                 if let downloadImage = UIImage(data: data!){
                     imageCache.setObject(downloadImage, forKey: urlString as NSString)
                     self.image = downloadImage
-//                    if self.imageUrlString == urlString{
-//                        self.image = donwloadImage
-//                    }
-                }
-                
+                }                
             }
         }).resume()
     }

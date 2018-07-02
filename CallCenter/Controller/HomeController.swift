@@ -43,7 +43,7 @@ class HomeController: UIViewController{
     }
     
     var btnDatePicker: UIButton?
-    //MARK: Controller life cycle
+    //MARK: - Controller life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ class HomeController: UIViewController{
     override func viewDidLayoutSubviews() {
     }
     
-    //MARK: Handle UI
+    //MARK: - Handle UI
     
     func setupTableView(){
         view.addSubview(tableView)
@@ -86,7 +86,7 @@ class HomeController: UIViewController{
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
-    //MARK: Handle Event
+    //MARK: - Handle Event
     @objc func datePickerSelected(){
         let datePickerVC = DatePickerController()
         datePickerVC.date = self.date
@@ -115,7 +115,7 @@ class HomeController: UIViewController{
         btnDatePicker?.setTitle(str, for: .normal)
     }
     
-    //MARK: Handle Data
+    //MARK: - Handle Data
     
     func refreshTitle(){
         if let user = Data.user{

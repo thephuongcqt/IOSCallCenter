@@ -12,10 +12,8 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 
-class BaseService{
-    static let shared = BaseService()
-    private init(){
-        
+class BaseService{    
+    public init(){        
     }
     
     func getAbsoluteUrl(from url: String) -> URL?{

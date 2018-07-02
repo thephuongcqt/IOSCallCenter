@@ -28,4 +28,5 @@ typealias completionHandler<T> = (T) -> ()
 
 typealias loginResultType = ResultType<LoginResponse<Clinic>>
 typealias getAppointmentsType = ResultType<BaseResponse<Appointment>>
+typealias getLicenseType = ResultType<BaseResponse<License>>
 

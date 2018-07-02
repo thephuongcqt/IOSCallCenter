@@ -34,6 +34,10 @@
 		BF930BD220E7FA050020FD3A /* DayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BD120E7FA050020FD3A /* DayHeader.swift */; };
 		BF930BD420E879950020FD3A /* DaysConfigController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BD320E879950020FD3A /* DaysConfigController.swift */; };
 		BF930BD620E880AD0020FD3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF930BD520E880AD0020FD3A /* GoogleService-Info.plist */; };
+		BF930BD820EA55040020FD3A /* LicenseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BD720EA55040020FD3A /* LicenseController.swift */; };
+		BF930BDB20EA57410020FD3A /* LicenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BDA20EA57410020FD3A /* LicenseCell.swift */; };
+		BF930BDD20EA67260020FD3A /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BDC20EA67260020FD3A /* License.swift */; };
+		BF930BDF20EA73220020FD3A /* LicenseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BDE20EA73220020FD3A /* LicenseService.swift */; };
 		BFA49BC120E27FCD0041EF76 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */; };
 		BFC1E39E20E15763004CCFEC /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39A20E15763004CCFEC /* ResultType.swift */; };
 		BFC1E39F20E15763004CCFEC /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39B20E15763004CCFEC /* BaseResponse.swift */; };
@@ -84,6 +88,10 @@
 		BF930BD120E7FA050020FD3A /* DayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeader.swift; sourceTree = "<group>"; };
 		BF930BD320E879950020FD3A /* DaysConfigController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysConfigController.swift; sourceTree = "<group>"; };
 		BF930BD520E880AD0020FD3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BF930BD720EA55040020FD3A /* LicenseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseController.swift; sourceTree = "<group>"; };
+		BF930BDA20EA57410020FD3A /* LicenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseCell.swift; sourceTree = "<group>"; };
+		BF930BDC20EA67260020FD3A /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		BF930BDE20EA73220020FD3A /* LicenseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseService.swift; sourceTree = "<group>"; };
 		BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BFC1E39A20E15763004CCFEC /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		BFC1E39B20E15763004CCFEC /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -169,6 +177,7 @@
 				BF930BC720E7E1160020FD3A /* WorkingHourController.swift */,
 				BF2D183120E692440001F113 /* HomeController.swift */,
 				BF930BD320E879950020FD3A /* DaysConfigController.swift */,
+				BF930BD720EA55040020FD3A /* LicenseController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -210,12 +219,41 @@
 			path = WorkingHourView;
 			sourceTree = "<group>";
 		};
+		BF930BD920EA57190020FD3A /* LicenseView */ = {
+			isa = PBXGroup;
+			children = (
+				BF930BDA20EA57410020FD3A /* LicenseCell.swift */,
+			);
+			path = LicenseView;
+			sourceTree = "<group>";
+		};
+		BF930BE020EA74B30020FD3A /* ApiBaseModel */ = {
+			isa = PBXGroup;
+			children = (
+				BF2D182320E5FDB70001F113 /* LoginResponse.swift */,
+				BFC1E39A20E15763004CCFEC /* ResultType.swift */,
+				BFC1E39B20E15763004CCFEC /* BaseResponse.swift */,
+				BF2D182920E602D00001F113 /* BaseRequest.swift */,
+			);
+			path = ApiBaseModel;
+			sourceTree = "<group>";
+		};
+		BF930BE120EA74E00020FD3A /* DateTimeTransform */ = {
+			isa = PBXGroup;
+			children = (
+				BFC1E39D20E15763004CCFEC /* BaseDateTransform.swift */,
+				BF2D182720E5FFA30001F113 /* BaseTimeTransform.swift */,
+			);
+			path = DateTimeTransform;
+			sourceTree = "<group>";
+		};
 		BFC1E39720E15413004CCFEC /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				BFC1E3A220E15770004CCFEC /* BaseService.swift */,
 				BFC1E3A320E15771004CCFEC /* LoginService.swift */,
 				BF2D181B20E543E80001F113 /* AppointmentService.swift */,
+				BF930BDE20EA73220020FD3A /* LicenseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -223,9 +261,9 @@
 		BFC1E39820E15763004CCFEC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF930BE120EA74E00020FD3A /* DateTimeTransform */,
+				BF930BE020EA74B30020FD3A /* ApiBaseModel */,
 				BFC1E39920E15763004CCFEC /* ApiModel */,
-				BFC1E39D20E15763004CCFEC /* BaseDateTransform.swift */,
-				BF2D182720E5FFA30001F113 /* BaseTimeTransform.swift */,
 				BF2D182120E5C3AE0001F113 /* Data.swift */,
 			);
 			path = Model;
@@ -234,13 +272,10 @@
 		BFC1E39920E15763004CCFEC /* ApiModel */ = {
 			isa = PBXGroup;
 			children = (
-				BFC1E39A20E15763004CCFEC /* ResultType.swift */,
-				BFC1E39B20E15763004CCFEC /* BaseResponse.swift */,
 				BFC1E39C20E15763004CCFEC /* Clinic.swift */,
 				BF2D181920E542BA0001F113 /* Appointment.swift */,
-				BF2D182320E5FDB70001F113 /* LoginResponse.swift */,
 				BF2D182520E5FE820001F113 /* WorkingHour.swift */,
-				BF2D182920E602D00001F113 /* BaseRequest.swift */,
+				BF930BDC20EA67260020FD3A /* License.swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -265,6 +300,7 @@
 		BFE6414620E14ADC0024BA22 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF930BD920EA57190020FD3A /* LicenseView */,
 				BF930BCC20E7EB6B0020FD3A /* WorkingHourView */,
 				BF930BCB20E7E4830020FD3A /* BaseControl */,
 				BF930BCA20E7E4710020FD3A /* SettingView */,
@@ -413,6 +449,8 @@
 				BF930BC220E780AA0020FD3A /* AppointmentTableHeader.swift in Sources */,
 				BF2D182020E54E600001F113 /* Extensions+Date.swift in Sources */,
 				BF4C744C20E0E60000C108CC /* LoginController.swift in Sources */,
+				BF930BDF20EA73220020FD3A /* LicenseService.swift in Sources */,
+				BF930BDD20EA67260020FD3A /* License.swift in Sources */,
 				BF16972E20E531D100211BD0 /* AppointmentCell.swift in Sources */,
 				BF2D183220E692440001F113 /* HomeController.swift in Sources */,
 				BFC1E3A020E15763004CCFEC /* Clinic.swift in Sources */,
@@ -424,6 +462,7 @@
 				BF2D181A20E542BA0001F113 /* Appointment.swift in Sources */,
 				BF930BC420E7AEEB0020FD3A /* AudioUtils.swift in Sources */,
 				BF930BC620E7BB740020FD3A /* ClinicProfileHeader.swift in Sources */,
+				BF930BD820EA55040020FD3A /* LicenseController.swift in Sources */,
 				BFC1E3A420E15771004CCFEC /* BaseService.swift in Sources */,
 				BF2D182A20E602D00001F113 /* BaseRequest.swift in Sources */,
 				BFE6414A20E14B380024BA22 /* BaseTextField.swift in Sources */,
@@ -442,6 +481,7 @@
 				BF2D182C20E629AE0001F113 /* DatePickerController.swift in Sources */,
 				BFE6414020E149AB0024BA22 /* Extensions+MBProgressHUD.swift in Sources */,
 				BF2D181C20E543E80001F113 /* AppointmentService.swift in Sources */,
+				BF930BDB20EA57410020FD3A /* LicenseCell.swift in Sources */,
 				BFE6414820E14AF40024BA22 /* BaseButton.swift in Sources */,
 				BFE6414520E14AAE0024BA22 /* Const.swift in Sources */,
 			);

@@ -44,6 +44,20 @@ extension UITableViewCell {
     }
 }
 
+extension Formatter {
+    static let moneyFormat: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = ","
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+}
+
+extension BinaryInteger {
+    var money: String {
+        return Formatter.moneyFormat.string(for: self) ?? ""
+    }
+}
 
 
 

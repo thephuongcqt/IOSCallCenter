@@ -10,17 +10,15 @@ import Foundation
 import Alamofire
 import AlamofireObjectMapper
 
-class AppointmentService{
+class AppointmentService: BaseService{
     static let shared = AppointmentService()
-    private init(){
-        
+    private override init(){
+        super.init()
     }
     
-    private let service = BaseService.shared
-    
     func getAppointments(with params: [String: Any], completion: @escaping completionHandler<getAppointmentsType>){
-        if let url = service.getAbsoluteUrl(from: appointmentsUrl){
-            service.getParams(with: url, parameters: params) { (result: getAppointmentsType) in
+        if let url = getAbsoluteUrl(from: appointmentsUrl){
+            getParams(with: url, parameters: params) { (result: getAppointmentsType) in
                 completion(result)
             }
         }
