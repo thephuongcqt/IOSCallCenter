@@ -24,9 +24,27 @@ class BaseResponse<T: Mappable>: Mappable{
     }
 }
 
+class StringResponse: Mappable{
+    var success: Bool?
+    var value: String?
+    var error: String?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        success <- map["status"]
+        value <- map["value"]
+        error <- map["error"]
+    }
+}
+
+
 typealias completionHandler<T> = (T) -> ()
 
 typealias loginResultType = ResultType<BaseSingleResponse<Clinic>>
 typealias getAppointmentsType = ResultType<BaseResponse<Appointment>>
 typealias getLicenseType = ResultType<BaseResponse<License>>
 typealias getPaymentTokenType = ResultType<BaseSingleResponse<Token>>
+typealias checkOutType = ResultType<StringResponse>
+

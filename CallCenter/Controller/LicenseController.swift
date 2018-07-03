@@ -13,6 +13,7 @@ import BraintreeDropIn
 class LicenseController: UITableViewController {
 
     var licenses: [License]?
+    var selectedLicenseID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +83,7 @@ class LicenseController: UITableViewController {
     }
     
     func buyLicense(license: License){
+        selectedLicenseID = "\(license.licenseID!)"
         let service = PaymentService.shared
         view.showHUD(with: "Đang tải")
         service.getClientToken { (result) in
@@ -109,19 +111,30 @@ class LicenseController: UITableViewController {
             } else if (result?.isCancelled == true) {
                 print("CANCELLED")
             } else if let result = result {
+                controller.dismiss(animated: true, completion: nil)
                 if result.paymentOptionType == .payPal{
-                    self.showAlert(message: "success")
-                    print(result)
+                    if let nonce = result.paymentMethod?.nonce , let username = Data.getUsername(), let licenseID = self.selectedLicenseID{
+                        let params = BaseRequest.createParamsCheckOut(username: username, licenseID: licenseID, nonce: nonce)
+                        let service = PaymentService.shared
+                        self.view.showHUD(with: "Đang tải")
+                        service.checkOut(params: params, completion: { (result) in
+                            self.view.hideHUD()
+                            switch result{
+                            case .success(let response):
+                                if let isSuccess = response.success, isSuccess{
+                                    self.showAlert(message: response.value ?? "Mua license thành công")
+                                } else if let err = response.error{
+                                    self.showAlert(message: err)
+                                }
+                            case .failure(error: let err):
+                                self.showAlert(message: err.localizedDescription)
+                            }
+                        })
+                    }
                 } else{
                     self.showAlert(message: "Hiện tại hệ thống chỉ hỗ trợ thanh toán bằng Paypal, Xin vui lòng thử lại")
                 }
-                // Use the BTDropInResult properties to update your UI
-                // result.paymentOptionType
-                // result.paymentMethod
-                // result.paymentIcon
-                // result.paymentDescription
             }
-            controller.dismiss(animated: true, completion: nil)
         }
         self.present(dropIn!, animated: true, completion: nil)
     }

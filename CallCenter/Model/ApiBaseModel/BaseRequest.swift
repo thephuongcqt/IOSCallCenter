@@ -23,4 +23,8 @@ class BaseRequest{
     static func createParamsGetAppointmentByDate(username: String, date: Date) -> [String: Any]{
         return [paramClinicUsername: username, paramAppointmentDate: date.toDateString(with: dateFormatForAppointments)]
     }
+    
+    static func createParamsCheckOut(username: String, licenseID: String, nonce: String) -> [String: Any]{
+        return [paramUsername: username, paramLicenseID: licenseID, paramNonce: nonce]
+    }
 }

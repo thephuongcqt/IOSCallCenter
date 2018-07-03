@@ -22,4 +22,12 @@ class PaymentService: BaseService {
             }
         }
     }
+    
+    func checkOut(params: [String: Any], completion: @escaping completionHandler<checkOutType>){
+        if let url = getAbsoluteUrl(from: checkOutUrl){
+            postParams(with: url, parameters: params) { (result: checkOutType) in
+                completion(result)
+            }
+        }
+    }
 }
