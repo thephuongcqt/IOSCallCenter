@@ -106,6 +106,7 @@ class HomeController: UIViewController{
     }
     
     @objc func refresh(_ refreshControl: UIRefreshControl) {
+        self.date = Date()
         loadAppointments()
     }
     

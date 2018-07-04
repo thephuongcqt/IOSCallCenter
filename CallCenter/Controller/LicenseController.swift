@@ -49,13 +49,11 @@ class LicenseController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    override func numberOfSections(in tableView: UITableView) -> Int {        
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return licenses?.count ?? 0
     }
     
@@ -106,12 +104,13 @@ class LicenseController: UITableViewController {
         let request =  BTDropInRequest()
         let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
         { (controller, result, error) in
+            controller.dismiss(animated: true, completion: nil)
             if (error != nil) {
-                print("ERROR")
+                self.showAlert(message: "Đã có lỗi xảy ra, vui lòng thử lại sau")
             } else if (result?.isCancelled == true) {
                 print("CANCELLED")
             } else if let result = result {
-                controller.dismiss(animated: true, completion: nil)
+                
                 if result.paymentOptionType == .payPal{
                     if let nonce = result.paymentMethod?.nonce , let username = Data.getUsername(), let licenseID = self.selectedLicenseID{
                         let params = BaseRequest.createParamsCheckOut(username: username, licenseID: licenseID, nonce: nonce)

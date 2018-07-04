@@ -31,19 +31,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let service = LoginService.shared
             let params = BaseRequest.createParamsUserInfo(username: username)
             
-            homeVC.view.showHUD(with: "Đang tải")
             service.getUserInformation(with: params) { (result) in
-                homeVC.view.hideHUD()
                 switch result{
                 case .success(let response):
                     if let isSuccess = response.success, isSuccess, let clinic = response.value{
                         Data.user = clinic
                         homeVC.refreshTitle()
                     } else if let err = response.error{
-                        homeVC.showAlert(message: err)
+                        print(err)
+//                        homeVC.showAlert(message: err)
                     }
                 case .failure(error: let err):
-                    homeVC.showAlert(message: err.localizedDescription)
+                    print(err)
+//                    homeVC.showAlert(message: err.localizedDescription)
                 }
             }
         } else{

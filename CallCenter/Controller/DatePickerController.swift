@@ -58,7 +58,6 @@ class DatePickerController: UIViewController {
         
         datePicker.setDate(date ?? Date(), animated: true)
         datePicker.locale = Locale(identifier: "vi_VN")
-        datePicker.timeZone = TimeZone(secondsFromGMT: 7)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismiss(sender:)))
         view.addGestureRecognizer(tapGesture)

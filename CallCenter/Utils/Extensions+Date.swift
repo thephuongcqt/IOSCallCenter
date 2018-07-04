@@ -11,8 +11,8 @@ import Foundation
 extension Date{
     static let df: DateFormatter = {
         let df = DateFormatter()
-        df.locale = Locale(identifier: "vi_VN")
-        df.timeZone = TimeZone(secondsFromGMT: 7)
+//        df.locale = Locale(identifier: "vi_VN")
+//        df.timeZone = TimeZone(secondsFromGMT: 7)
         return df
     }()
     
