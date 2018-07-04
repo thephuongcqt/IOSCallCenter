@@ -22,11 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BTAppSwitch.setReturnURLScheme("phuongnt.CallCenter.payments")
 //        FirebaseApp.configure()
         
-        var rootNavigationController: UINavigationController
+        var rootNavigationController: NavigationController
         if let username = Data.getUsername(){
             //Move to home page when user is already logged in
             let homeVC = HomeController()
-            rootNavigationController = UINavigationController(rootViewController: homeVC)
+            rootNavigationController = NavigationController(rootViewController: homeVC)
             //Refresh data
             let service = LoginService.shared
             let params = BaseRequest.createParamsUserInfo(username: username)
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else{
             //move to login page
-            rootNavigationController = UINavigationController(rootViewController: LoginController())
+            rootNavigationController = NavigationController(rootViewController: LoginController())
         }
         
         window?.rootViewController = rootNavigationController

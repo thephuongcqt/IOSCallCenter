@@ -14,6 +14,7 @@ class AppointmentTableHeader: UIView {
         var btn = BaseButton()
         btn.setTitle("Click me", for: .normal)
         btn.layer.borderWidth = 0
+        btn.setTitleColor(.white, for: .normal)
         return btn
     }()
     
@@ -28,6 +29,7 @@ class AppointmentTableHeader: UIView {
     }
     
     func setupView(){
+        backgroundColor = .mainColor
         addSubview(btnDatePicker)
         
         btnDatePicker.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 2).isActive = true

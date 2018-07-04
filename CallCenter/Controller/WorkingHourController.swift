@@ -14,10 +14,6 @@ class WorkingHourController: UIViewController {
         case duration = 0, workingHours
     }
     
-    enum Working: Int{
-        case monStart = 0, monEnd, tueStart, tueEnd, wesStart, wesEnd, thuStart, thuEnd, friStart, friEnd, satStart, satEnd
-    }
-    
     enum Day: Int{
         case Sun = 0, Mon, Tue, Wes, Thu, Fri, Sat
     }
@@ -207,6 +203,7 @@ extension WorkingHourController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == Section.duration.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "durationCell", for: indexPath) as! DurationCell
+            cell.selectionStyle = .none
             cell.btnDuration.addTarget(self, action: #selector(onButtonSelected(button:)), for: .touchUpInside)
             cell.btnDuration.tag = days.count * 2
             cell.btnConfig.addTarget(self, action: #selector(onButtonConfigManyDaysSelected), for: .touchUpInside)
@@ -214,6 +211,7 @@ extension WorkingHourController: UITableViewDataSource, UITableViewDelegate{
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "dayCell", for: indexPath) as! DayCell
+        cell.selectionStyle = .none
         cell.lblDay.text = days[indexPath.row]
         cell.btnStart.addTarget(self, action: #selector(onButtonSelected(button:)), for: .touchUpInside)
         cell.btnStart.tag = indexPath.row * 2

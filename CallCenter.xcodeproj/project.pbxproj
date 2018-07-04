@@ -40,6 +40,8 @@
 		BF930BDF20EA73220020FD3A /* LicenseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BDE20EA73220020FD3A /* LicenseService.swift */; };
 		BF930BE320EA87200020FD3A /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BE220EA87200020FD3A /* PaymentService.swift */; };
 		BF930BE520EA88410020FD3A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BE420EA88410020FD3A /* Token.swift */; };
+		BF930BE720ED257C0020FD3A /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BE620ED257C0020FD3A /* RegisterController.swift */; };
+		BF930BE920ED29830020FD3A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BE820ED29830020FD3A /* NavigationController.swift */; };
 		BFA49BC120E27FCD0041EF76 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */; };
 		BFC1E39E20E15763004CCFEC /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39A20E15763004CCFEC /* ResultType.swift */; };
 		BFC1E39F20E15763004CCFEC /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39B20E15763004CCFEC /* BaseResponse.swift */; };
@@ -96,6 +98,8 @@
 		BF930BDE20EA73220020FD3A /* LicenseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseService.swift; sourceTree = "<group>"; };
 		BF930BE220EA87200020FD3A /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
 		BF930BE420EA88410020FD3A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		BF930BE620ED257C0020FD3A /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		BF930BE820ED29830020FD3A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BFC1E39A20E15763004CCFEC /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		BFC1E39B20E15763004CCFEC /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				BF2D183120E692440001F113 /* HomeController.swift */,
 				BF930BD320E879950020FD3A /* DaysConfigController.swift */,
 				BF930BD720EA55040020FD3A /* LicenseController.swift */,
+				BF930BE620ED257C0020FD3A /* RegisterController.swift */,
+				BF930BE820ED29830020FD3A /* NavigationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 				BF930BDF20EA73220020FD3A /* LicenseService.swift in Sources */,
 				BF930BDD20EA67260020FD3A /* License.swift in Sources */,
 				BF16972E20E531D100211BD0 /* AppointmentCell.swift in Sources */,
+				BF930BE720ED257C0020FD3A /* RegisterController.swift in Sources */,
 				BF2D183220E692440001F113 /* HomeController.swift in Sources */,
 				BFC1E3A020E15763004CCFEC /* Clinic.swift in Sources */,
 				BFE6412A20E146FE0024BA22 /* Extensions+UIViewController.swift in Sources */,
@@ -474,6 +481,7 @@
 				BF2D181A20E542BA0001F113 /* Appointment.swift in Sources */,
 				BF930BC420E7AEEB0020FD3A /* AudioUtils.swift in Sources */,
 				BF930BC620E7BB740020FD3A /* ClinicProfileHeader.swift in Sources */,
+				BF930BE920ED29830020FD3A /* NavigationController.swift in Sources */,
 				BF930BD820EA55040020FD3A /* LicenseController.swift in Sources */,
 				BFC1E3A420E15771004CCFEC /* BaseService.swift in Sources */,
 				BF2D182A20E602D00001F113 /* BaseRequest.swift in Sources */,

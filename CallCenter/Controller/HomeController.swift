@@ -33,6 +33,8 @@ class HomeController: UIViewController{
         sc.searchBar.sizeToFit()
         sc.searchBar.delegate = self
         sc.searchBar.placeholder = "Tìm kiếm bệnh nhân"
+        sc.searchBar.tintColor = .mainColor
+        sc.searchBar.barTintColor = .mainGray
         return sc
     }()
     
@@ -81,9 +83,6 @@ class HomeController: UIViewController{
         let imageSetting = #imageLiteral(resourceName: "icon_settings")
         let rightButton = UIBarButtonItem(image: imageSetting, style: .plain, target: self, action: #selector(rightBarButtonSelected))
         navigationItem.rightBarButtonItem = rightButton
-        navigationController?.navigationBar.tintColor = .mainColor
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.mainColor]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     //MARK: - Handle Event
@@ -228,6 +227,7 @@ extension HomeController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! AppointmentCell
+        cell.selectionStyle = .none
         if let item = self.appointments?[indexPath.row]{
             cell.setPhoneNumber(phone: item.phoneNumber ?? "")
             cell.setPatientName(name: item.fullName ?? "")

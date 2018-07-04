@@ -45,7 +45,7 @@ class SettingViewController: UIViewController{
         Data.user = nil
         Data.setUsername(value: nil)
         let appDelegate = UIApplication.shared.delegate!
-        appDelegate.window??.rootViewController = UINavigationController(rootViewController: LoginController())
+        appDelegate.window??.rootViewController = NavigationController(rootViewController: LoginController())
     }
 }
 
@@ -96,6 +96,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId")!
+        cell.selectionStyle = .none
         if indexPath.section == Section.information.rawValue{
             cell.textLabel?.text = settingItems[indexPath.row]
             cell.imageView?.image = #imageLiteral(resourceName: "icon_folder")

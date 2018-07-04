@@ -12,7 +12,12 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 
-class BaseService{    
+protocol ResponseDelegate {
+    func onSuccess<T>(result: T)
+    func onFailure(error: Error)
+}
+
+class BaseService{
     public init(){        
     }
     
@@ -24,47 +29,6 @@ class BaseService{
         return nil
     }
     
-//    func getParams(with url: URL, completion: @escaping (_ dictionary: [String: Any]?, _ success: Bool, _ error: Error?) -> ()){
-//        Alamofire.request(url).responseJSON { (response) in
-//            if response.error != nil{
-//                completion(nil, false, response.error)
-//                return
-//            }
-//            if let dictionary = response.result.value as? [String: Any]{
-//                completion(dictionary, true, nil)
-//            } else{
-//                completion(nil, false, nil)
-//            }
-//        }
-//    }
-    
-    
-//    func requestJSON(with url: URL, method: HTTPMethod, parameters: [String: Any], completion: @escaping (_ dictionary: [String: Any]?, _ error: String?) -> ()){
-//        Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: [:]).responseJSON { (response) in
-//            switch response.result{
-//            case .success(let value):
-//                if let json = value as? [String: Any]{
-//                    completion(json, nil)
-//                } else{
-//                    completion(nil, errorNetworking)
-//                }
-//            case .failure(let error):
-//                completion(nil, error.localizedDescription)
-//            }
-//        }
-//    }
-//
-//    func requestJSON<T: Mappable>(with url: URL, method: HTTPMethod, parameters: [String: Any], completion: @escaping (_ result: T?, _ error: String?) -> ()){
-//        Alamofire.request(url, method: method, parameters: parameters).validate(statusCode: 200...300).responseObject { (resonse: DataResponse<T>) in
-//            switch resonse.result{
-//            case .success(let value):
-//                completion(value, nil)
-//            case .failure(let error):
-//                completion(nil, error.localizedDescription)
-//            }
-//        }
-//        completion(nil, errorNetworking)
-//    }
     internal func getParams<T: Mappable>(with url: URL, parameters: [String: Any], completion: @escaping (ResultType<T>) -> ()){
         Alamofire.request(url, method: .get, parameters: parameters).validate(statusCode: 200...300).responseObject { (resonse: DataResponse<T>) in
             switch resonse.result{
@@ -85,6 +49,5 @@ class BaseService{
                 completion(.failure(error: error))
             }
         }
-
     }
 }

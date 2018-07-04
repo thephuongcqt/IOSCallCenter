@@ -18,6 +18,7 @@ class LoginController: UIViewController {
     
     let txtUsername: BaseTextField = {
         let tf = BaseTextField()
+        tf.autocapitalizationType = .none
         tf.placeholder = "Tên đăng nhập"
         return tf
     }()
@@ -39,6 +40,7 @@ class LoginController: UIViewController {
     let btnRegister: BaseButton = {
         let btn = BaseButton()
         btn.setTitle("Đăng ký", for: .normal)
+        btn.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
         return btn
     }()
     
@@ -111,6 +113,12 @@ class LoginController: UIViewController {
                     }
             })
         }
+    }
+    
+    @objc func handleRegister(){
+        let registerVC = RegisterController()
+        let navController = NavigationController(rootViewController: registerVC)
+        present(navController, animated: true, completion: nil)
     }
 }
 
