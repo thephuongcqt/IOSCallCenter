@@ -33,8 +33,11 @@ class HomeController: UIViewController{
         sc.searchBar.sizeToFit()
         sc.searchBar.delegate = self
         sc.searchBar.placeholder = "Tìm kiếm bệnh nhân"
-        sc.searchBar.tintColor = .mainColor
-        sc.searchBar.barTintColor = .mainGray
+        sc.searchBar.tintColor = .white
+        sc.searchBar.barTintColor = .mainColor
+        sc.searchBar.isTranslucent = false
+//        sc.searchBar.barStyle = .blackTranslucent
+//        sc.searchBar.searchBarStyle = .prominent
         return sc
     }()
     
@@ -78,6 +81,7 @@ class HomeController: UIViewController{
         view.backgroundColor = .white
         self.title = "Phòng khám"
         navigationItem.searchController = searchController
+        self.extendedLayoutIncludesOpaqueBars = true
         navigationItem.hidesSearchBarWhenScrolling = true
         
         let imageSetting = #imageLiteral(resourceName: "icon_settings")

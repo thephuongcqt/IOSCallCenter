@@ -42,6 +42,7 @@
 		BF930BE520EA88410020FD3A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BE420EA88410020FD3A /* Token.swift */; };
 		BF930BE720ED257C0020FD3A /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BE620ED257C0020FD3A /* RegisterController.swift */; };
 		BF930BE920ED29830020FD3A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF930BE820ED29830020FD3A /* NavigationController.swift */; };
+		BF98A88620F11A3D00829768 /* RecordingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF98A88520F11A3D00829768 /* RecordingController.swift */; };
 		BFA49BC120E27FCD0041EF76 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */; };
 		BFC1E39E20E15763004CCFEC /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39A20E15763004CCFEC /* ResultType.swift */; };
 		BFC1E39F20E15763004CCFEC /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1E39B20E15763004CCFEC /* BaseResponse.swift */; };
@@ -100,6 +101,7 @@
 		BF930BE420EA88410020FD3A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		BF930BE620ED257C0020FD3A /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		BF930BE820ED29830020FD3A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		BF98A88520F11A3D00829768 /* RecordingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingController.swift; sourceTree = "<group>"; };
 		BFA49BC020E27FCD0041EF76 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BFC1E39A20E15763004CCFEC /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		BFC1E39B20E15763004CCFEC /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				BF930BD720EA55040020FD3A /* LicenseController.swift */,
 				BF930BE620ED257C0020FD3A /* RegisterController.swift */,
 				BF930BE820ED29830020FD3A /* NavigationController.swift */,
+				BF98A88520F11A3D00829768 /* RecordingController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				BF2D182A20E602D00001F113 /* BaseRequest.swift in Sources */,
 				BFE6414A20E14B380024BA22 /* BaseTextField.swift in Sources */,
 				BF930BC820E7E1160020FD3A /* WorkingHourController.swift in Sources */,
+				BF98A88620F11A3D00829768 /* RecordingController.swift in Sources */,
 				BFE6412820E146B10024BA22 /* Extensions.swift in Sources */,
 				BF2D182220E5C3AE0001F113 /* Data.swift in Sources */,
 				BF930BCE20E7EB8E0020FD3A /* DurationCell.swift in Sources */,

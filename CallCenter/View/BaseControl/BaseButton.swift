@@ -31,8 +31,9 @@ class BaseButton: UIButton {
         layer.borderWidth = 1.0
 //        layer.borderColor = UIColor.gray.cgColor
         layer.borderColor = UIColor.mainColor.cgColor
-//
-        setTitleColor(UIColor.mainColor, for: .normal)
+        self.backgroundColor = .mainColor
+        setTitleColor(UIColor.white, for: .normal)
+//        setTitleColor(UIColor.mainColor, for: .normal)
 //        titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         //        titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
     }

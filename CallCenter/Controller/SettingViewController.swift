@@ -120,8 +120,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 navigationItem.backBarButtonItem = UIBarButtonItem(title: backTitle, style: .plain, target: workingHourVC, action: nil)
                 navigationController?.pushViewController(workingHourVC, animated: true)
             case Setting.greetingMessage.rawValue:
-                print(indexPath.row)
-                print(45)
+                let recordingVC = RecordingController()
+                navigationItem.backBarButtonItem = UIBarButtonItem(title: backTitle, style: .plain, target: recordingVC, action: nil)
+                navigationController?.pushViewController(recordingVC, animated: true)
             case Setting.changeLogo.rawValue:
                 print(indexPath.row)
             case Setting.buyLicense.rawValue:

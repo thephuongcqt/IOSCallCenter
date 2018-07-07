@@ -47,6 +47,7 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        title = "Call Center"
         
         self.setupKeyboardGestureRecognizer()
         self.view.addSubview(loginView)

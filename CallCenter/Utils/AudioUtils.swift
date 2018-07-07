@@ -89,7 +89,6 @@ class AudioUtils {
             error = ExtAudioFileWrite(destinationFile!, numFrames, &fillBufList)
             print("Error 5 in convertAudio: \(error.description)")
         }
-        
         error = ExtAudioFileDispose(destinationFile!)
         print("Error 6 in convertAudio: \(error.description)")
         error = ExtAudioFileDispose(sourceFile!)
