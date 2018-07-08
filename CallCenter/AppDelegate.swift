@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Braintree
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         BTAppSwitch.setReturnURLScheme("phuongnt.CallCenter.payments")
         FirebaseApp.configure()
+        IQKeyboardManager.shared.enable = true
         
         var rootNavigationController: NavigationController
         if let username = Data.getUsername(){

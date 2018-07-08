@@ -67,6 +67,8 @@ class RegisterController: UIViewController{
         return button
     }()
     
+    var selectedTextField: UITextField?
+    
     lazy var textFields: [BaseTextField] = [tfUsername, tfEmail, tfClinicName, tfPhone, tfPassword, tfConfirmPassword, tfAddress]
     
     override func viewDidLoad() {
@@ -78,18 +80,13 @@ class RegisterController: UIViewController{
         view.addSubview(scrollView)
         setupLayout()
         setupKeyboardGestureRecognizer()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    
     
     func setupLayout(){
         scrollView.frame = view.bounds
-        scrollView.contentInsetAdjustmentBehavior = .automatic
-        let window = UIApplication.shared.windows[0]
-        scrollView.contentInset = window.safeAreaInsets
-
+        scrollView.contentInsetAdjustmentBehavior = .automatic        
+        scrollView.contentInset = .zero
+        
         let svWidth = scrollView.frame.width, height = CGFloat(45), spacing = CGFloat(15)
         let xPosition = CGFloat(15)
         let width = svWidth - xPosition * 2
@@ -122,26 +119,11 @@ class RegisterController: UIViewController{
     }
     
     // MARK: - Handle keyboard
-    
-    @objc func keyboardWillShow(notification: NSNotification){
-        var userInfo = notification.userInfo!
-        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-        
-        var contentInset: UIEdgeInsets = self.scrollView.contentInset
-        contentInset.bottom = keyboardFrame.size.height
-        scrollView.contentInset = contentInset
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification){
-        let contentInset: UIEdgeInsets = UIEdgeInsets.zero
-        scrollView.contentInset = contentInset
-    }
 }
 
 extension RegisterController: UITextFieldDelegate{
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        
+        selectedTextField = textField
         return true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

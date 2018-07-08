@@ -14,4 +14,5 @@ target 'CallCenter' do
     pod 'Firebase/Storage'
     pod 'BraintreeDropIn'
     pod 'Braintree/PayPal'
+    pod 'IQKeyboardManagerSwift', '~> 6.0.4'
 end

@@ -103,7 +103,7 @@ class RecordingController: UIViewController {
         let greetingRef = storageRef.child("phuong.mp3")
         
         view.showHUD(with: "")
-        let uploadTask = greetingRef.putFile(from: getMP3FileURL(), metadata: nil) { (metadata, error) in
+        greetingRef.putFile(from: getMP3FileURL(), metadata: nil) { (metadata, error) in
             DispatchQueue.main.async {
                 self.view.hideHUD()
                 if error != nil{

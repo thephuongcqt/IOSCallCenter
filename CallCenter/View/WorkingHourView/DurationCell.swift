@@ -52,17 +52,19 @@ class DurationCell: UITableViewCell {
         addSubview(btnDuration)
         addSubview(btnConfig)
         
-        lblTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        lblTitle.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        
-        btnDuration.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        btnDuration.topAnchor.constraint(equalTo: lblTitle.bottomAnchor, constant: 10).isActive = true
-        btnDuration.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        btnDuration.widthAnchor.constraint(equalToConstant: 180).isActive = true
-        
-        btnConfig.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
-        btnConfig.topAnchor.constraint(equalTo: btnDuration.topAnchor).isActive = true
-        btnConfig.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        btnConfig.widthAnchor.constraint(equalToConstant: 180).isActive = true
+        NSLayoutConstraint.activate([
+            lblTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            lblTitle.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            
+            btnDuration.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            btnDuration.topAnchor.constraint(equalTo: lblTitle.bottomAnchor, constant: 10),
+            btnDuration.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -7.5),
+            btnDuration.heightAnchor.constraint(equalToConstant: 50),
+            
+            btnConfig.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 7.5),
+            btnConfig.topAnchor.constraint(equalTo: btnDuration.topAnchor),
+            btnConfig.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            btnConfig.heightAnchor.constraint(equalToConstant: 50)
+            ])
     }
 }
