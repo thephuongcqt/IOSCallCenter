@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()            
         
         BTAppSwitch.setReturnURLScheme("phuongnt.CallCenter.payments")
-//        FirebaseApp.configure()
+        FirebaseApp.configure()
         
         var rootNavigationController: NavigationController
         if let username = Data.getUsername(){

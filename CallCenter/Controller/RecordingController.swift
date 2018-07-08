@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Firebase
 
 class RecordingController: UIViewController {
 
@@ -47,6 +48,16 @@ class RecordingController: UIViewController {
         return button
     }()
     
+    let btnUpload: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Tải tệp lên", for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.mainColor.cgColor
+        button.setTitleColor(.mainColor, for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,8 +72,10 @@ class RecordingController: UIViewController {
                 self.view.addSubview(self.lblTimer)
                 self.view.addSubview(self.btnRecord)
                 self.view.addSubview(self.btnPlay)
+                self.view.addSubview(self.btnUpload)
                 self.btnRecord.addTarget(self, action: #selector(self.handleButtonRecordingSelected), for: .touchUpInside)
                 self.btnPlay.addTarget(self, action: #selector(self.handleButtonPlaySelected), for: .touchUpInside)
+                self.btnUpload.addTarget(self, action: #selector(self.handleButtonUploadSelected), for: .touchUpInside)
                 self.setupLayout()
             }
         }
@@ -71,22 +84,50 @@ class RecordingController: UIViewController {
     func setupLayout(){
         NSLayoutConstraint.activate([
             lblTimer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lblTimer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20)
-            ])
-        
-        NSLayoutConstraint.activate([
-            btnRecord.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -30),
-            btnRecord.topAnchor.constraint(equalTo: lblTimer.bottomAnchor, constant: 15),
-            btnRecord.widthAnchor.constraint(equalToConstant: 150),
-            btnRecord.heightAnchor.constraint(equalToConstant: 45)
-            ])
-        
-        NSLayoutConstraint.activate([
+            lblTimer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            
             btnPlay.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 30),
             btnPlay.topAnchor.constraint(equalTo: btnRecord.topAnchor),
             btnPlay.widthAnchor.constraint(equalToConstant: 150),
-            btnPlay.heightAnchor.constraint(equalToConstant: 45)
+            btnPlay.heightAnchor.constraint(equalToConstant: 45),
+            
+            btnRecord.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -30),
+            btnRecord.topAnchor.constraint(equalTo: lblTimer.bottomAnchor, constant: 15),
+            btnRecord.widthAnchor.constraint(equalToConstant: 150),
+            btnRecord.heightAnchor.constraint(equalToConstant: 45),
+            
+            btnUpload.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            btnUpload.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
+            btnUpload.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40),
+            btnUpload.heightAnchor.constraint(equalToConstant: 45)
             ])
+    }
+    
+    // MARK: - Handle upload file
+    
+    @objc func handleButtonUploadSelected(){
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let greetingRef = storageRef.child("phuong.mp3")
+        
+        view.showHUD(with: "")
+        let uploadTask = greetingRef.putFile(from: getMP3FileURL(), metadata: nil) { (metadata, error) in
+            DispatchQueue.main.async {
+                self.view.hideHUD()
+                if error != nil{
+                    self.showAlert(title: "Thông báo", message: error?.localizedDescription ?? "Error")
+                    return
+                }                
+                self.showAlert(title: "Thông báo", message: "Tải tệp lên thành công")
+                storageRef.downloadURL(completion: { (url, error) in
+                    if let downloadUrl = url {
+                        print(downloadUrl.absoluteString)
+                    } else {
+                        print("error")
+                    }
+                })
+            }
+        }
     }
     
     // MARK: - Check permission
@@ -117,15 +158,20 @@ class RecordingController: UIViewController {
     
     // MARK: - Directory file
     
-    func getCacheDirectory() -> URL{
+    func getCacheDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
     
-    func getFileURL() -> URL{
+    func getFileURL() -> URL {
         let fileName = "Greeting.m4a"
         let filePath = getCacheDirectory().appendingPathComponent(fileName)
         return filePath
+    }
+    
+    func getMP3FileURL() -> URL {
+        let fileName = "Greeting.mp3"
+        return getCacheDirectory().appendingPathComponent(fileName)
     }
     
     // MARK: - Handle recording
@@ -171,6 +217,9 @@ class RecordingController: UIViewController {
             audioRecorder.stop()
             audioRecorder = nil
             meterTimer.invalidate()
+            
+            AudioUtils.convertAudio(getFileURL(), outputURL: getMP3FileURL())
+            
             showAlert(title: "Thông báo", message: "Ghi âm hoàn tất")
         } else{
             showAlert(title: "Lỗi", message: "Ghi âm thất bại")

@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 
 class AudioUtils {
-    func convertAudio(_ url: URL, outputURL: URL) {
+    static func convertAudio(_ url: URL, outputURL: URL) {
         var error : OSStatus = noErr
         var destinationFile: ExtAudioFileRef? = nil
         var sourceFile : ExtAudioFileRef? = nil
