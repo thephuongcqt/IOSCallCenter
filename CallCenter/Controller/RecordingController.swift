@@ -21,40 +21,31 @@ class RecordingController: UIViewController {
     
     let lblTimer: UILabel = {
         let label = UILabel()
-        label.text = "00.00:00"
-        label.font = .boldSystemFont(ofSize: 17)
+        label.text = "00:00:00"
+        label.font = .boldSystemFont(ofSize: 26)
         label.textColor = .mainColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let btnRecord: UIButton = {
-        let button = UIButton()
+        let button = BaseButton(style: .borderStyle)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Bắt đầu ghi âm", for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.mainColor.cgColor
-        button.setTitleColor(.mainColor, for: .normal)
         return button
     }()
     
     let btnPlay: UIButton = {
-        let button = UIButton()
+        let button = BaseButton(style: .borderStyle)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Phát đoạn ghi âm", for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.mainColor.cgColor
-        button.setTitleColor(.mainColor, for: .normal)
         return button
     }()
     
     let btnUpload: UIButton = {
-        let button = UIButton()
+        let button = BaseButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Tải tệp lên", for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.mainColor.cgColor
-        button.setTitleColor(.mainColor, for: .normal)
         return button
     }()
     
@@ -64,6 +55,7 @@ class RecordingController: UIViewController {
         title = "Cài đặt lời chào"
         view.backgroundColor = .white
         checkRecordingPermission()
+        checkExistGreetingFile()
     }
     
     func permissionChecked(){
@@ -84,16 +76,16 @@ class RecordingController: UIViewController {
     func setupLayout(){
         NSLayoutConstraint.activate([
             lblTimer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lblTimer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            lblTimer.bottomAnchor.constraint(equalTo: view.centerYAnchor, constant: -80),
             
-            btnPlay.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 30),
+            btnPlay.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 10),
             btnPlay.topAnchor.constraint(equalTo: btnRecord.topAnchor),
-            btnPlay.widthAnchor.constraint(equalToConstant: 150),
+            btnPlay.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             btnPlay.heightAnchor.constraint(equalToConstant: 45),
             
-            btnRecord.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -30),
-            btnRecord.topAnchor.constraint(equalTo: lblTimer.bottomAnchor, constant: 15),
-            btnRecord.widthAnchor.constraint(equalToConstant: 150),
+            btnRecord.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            btnRecord.topAnchor.constraint(equalTo: lblTimer.bottomAnchor, constant: 30),
+            btnRecord.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -10),
             btnRecord.heightAnchor.constraint(equalToConstant: 45),
             
             btnUpload.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -247,7 +239,7 @@ class RecordingController: UIViewController {
     
     func updateNotRecording(){
         meterTimer = nil
-        lblTimer.text = "00.00.00"
+        lblTimer.text = "00:00:00"
         btnRecord.setTitle("Bắt đầu ghi âm", for: .normal)
         btnPlay.isEnabled = true
         isRecording = false
@@ -263,14 +255,14 @@ class RecordingController: UIViewController {
     
     func updateNotPlaying(){
         meterTimer = nil
-        lblTimer.text = "00.00.00"
+//        lblTimer.text = "00.00.00"
         btnPlay.setTitle("Phát đoạn ghi âm", for: .normal)
         isPlaying = false
         btnRecord.isEnabled = true
     }
     
     func updatePlaying(){
-        lblTimer.text = "00.00.00"
+        lblTimer.text = "00:00:00"
         btnPlay.setTitle("Dừng phát", for: .normal)
         isPlaying = true
         btnRecord.isEnabled = false
@@ -301,6 +293,14 @@ class RecordingController: UIViewController {
             showAlert(title: "Lỗi", message: error.localizedDescription)
         }
     }
+    
+    func checkExistGreetingFile(){
+        if FileManager.default.fileExists(atPath: getMP3FileURL().path) {
+            btnUpload.isEnabled = true
+        } else{
+            btnUpload.isEnabled = false
+        }
+    }
 }
 
 extension RecordingController: AVAudioRecorderDelegate, AVAudioPlayerDelegate{
@@ -309,6 +309,7 @@ extension RecordingController: AVAudioRecorderDelegate, AVAudioPlayerDelegate{
             finishAudioRecording(success: false)
         }
         updateNotRecording()
+        checkExistGreetingFile()
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {

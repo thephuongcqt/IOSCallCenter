@@ -8,33 +8,64 @@
 
 import UIKit
 
+enum ButtonStyle {
+    case defaultStyle
+    case borderStyle
+}
+
 class BaseButton: UIButton {
+    
+    var style: ButtonStyle?
+    
+    override var isEnabled: Bool{
+        didSet{
+            if isEnabled{
+                setupLayout()
+            } else{
+                disableButton()
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupViews()
+        setupLayout()
+    }
+    
+    init(style: ButtonStyle) {
+        super.init(frame: .zero)
+        self.style = style
+        setupLayout()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var heightAnchorConstraint: NSLayoutConstraint?
+    func disableButton(){
+        if let style = self.style, style == .borderStyle{
+            layer.borderColor = UIColor.lightGray.cgColor
+            backgroundColor = .white
+            setTitleColor(.lightGray, for: .normal)
+        } else{
+            layer.borderColor = UIColor.lightGray.cgColor
+            backgroundColor = .lightGray
+            setTitleColor(.white, for: .normal)
+        }
+    }
     
-    func setupViews(){
-        self.translatesAutoresizingMaskIntoConstraints = false
-        heightAnchorConstraint = heightAnchor.constraint(equalToConstant: 45)
-        heightAnchorConstraint?.isActive = true
-        
-//        layer.cornerRadius = 15.0
-        layer.borderWidth = 1.0
-//        layer.borderColor = UIColor.gray.cgColor
-        layer.borderColor = UIColor.mainColor.cgColor
-        self.backgroundColor = .mainColor
-        setTitleColor(UIColor.white, for: .normal)
-//        setTitleColor(UIColor.mainColor, for: .normal)
-//        titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        //        titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+    func setupLayout(){
+        if let style = self.style, style == .borderStyle{
+            layer.borderWidth = 1.0
+            layer.borderColor = UIColor.mainColor.cgColor
+            self.backgroundColor = .white
+            setTitleColor(.mainColor, for: .normal)
+        } else{
+            layer.borderWidth = 1.0
+            layer.borderColor = UIColor.mainColor.cgColor
+            self.backgroundColor = .mainColor
+            setTitleColor(.white, for: .normal)
+        }
     }
 }

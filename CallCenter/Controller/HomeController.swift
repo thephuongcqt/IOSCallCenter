@@ -210,7 +210,7 @@ extension HomeController: UITableViewDataSource, UITableViewDelegate{
             return view
         }
         let view = AppointmentHeader()
-        view.backgroundColor = .mainColor        
+        view.backgroundColor = .mainGray
         return view
     }
     

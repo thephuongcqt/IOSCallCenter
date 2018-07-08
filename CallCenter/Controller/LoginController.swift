@@ -34,6 +34,7 @@ class LoginController: UIViewController {
         let btn = BaseButton()
         btn.setTitle("Đăng nhập", for: .normal)
         btn.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     
@@ -41,6 +42,7 @@ class LoginController: UIViewController {
         let btn = BaseButton()
         btn.setTitle("Đăng ký", for: .normal)
         btn.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
+        btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     
@@ -59,27 +61,31 @@ class LoginController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         //The method when layout is ready for constraint
-        
-        loginView.leadingAnchor.constraint(equalTo: view.safeLeadingAnchor, constant: 20).isActive = true
-        loginView.trailingAnchor.constraint(equalTo: view.safeTrailingAnchor, constant: -20).isActive = true
-        loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        loginView.heightAnchor.constraint(equalToConstant: 240).isActive = true
-        
-        txtUsername.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10).isActive = true
-        txtUsername.topAnchor.constraint(equalTo: loginView.topAnchor, constant: 10).isActive = true
-        txtUsername.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10).isActive = true
-        
-        txtPassword.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10).isActive = true
-        txtPassword.topAnchor.constraint(equalTo: txtUsername.bottomAnchor, constant: 10).isActive = true
-        txtPassword.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10).isActive = true
-        
-        btnLogin.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10).isActive = true
-        btnLogin.topAnchor.constraint(equalTo: txtPassword.bottomAnchor, constant: 10).isActive = true
-        btnLogin.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10).isActive = true
-        
-        btnRegister.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10).isActive = true
-        btnRegister.topAnchor.constraint(equalTo: btnLogin.bottomAnchor, constant: 10).isActive = true
-        btnRegister.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10).isActive = true
+
+        NSLayoutConstraint.activate([
+            loginView.leadingAnchor.constraint(equalTo: view.safeLeadingAnchor, constant: 20),
+            loginView.trailingAnchor.constraint(equalTo: view.safeTrailingAnchor, constant: -20),
+            loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loginView.heightAnchor.constraint(equalToConstant: 240),
+            
+            txtUsername.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10),
+            txtUsername.topAnchor.constraint(equalTo: loginView.topAnchor, constant: 10),
+            txtUsername.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10),
+            
+            txtPassword.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10),
+            txtPassword.topAnchor.constraint(equalTo: txtUsername.bottomAnchor, constant: 10),
+            txtPassword.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10),
+            
+            btnLogin.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10),
+            btnLogin.topAnchor.constraint(equalTo: txtPassword.bottomAnchor, constant: 10),
+            btnLogin.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10),
+            btnLogin.heightAnchor.constraint(equalToConstant: 45),
+            
+            btnRegister.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 10),
+            btnRegister.topAnchor.constraint(equalTo: btnLogin.bottomAnchor, constant: 10),
+            btnRegister.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -10),
+            btnRegister.heightAnchor.constraint(equalToConstant: 45)
+            ])
     }
 
     override func didReceiveMemoryWarning() {

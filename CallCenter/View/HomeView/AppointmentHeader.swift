@@ -14,7 +14,7 @@ class AppointmentHeader: UIView {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "STT"
-        label.textColor = .white
+        label.textColor = .mainColor
         return label
     }()
     
@@ -22,7 +22,7 @@ class AppointmentHeader: UIView {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Thông tin bệnh nhân"
-        label.textColor = .white
+        label.textColor = .mainColor
         return label
     }()
     
@@ -30,7 +30,7 @@ class AppointmentHeader: UIView {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Giờ khám"
-        label.textColor = .white
+        label.textColor = .mainColor
         return label
     }()
     
