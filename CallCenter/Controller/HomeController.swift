@@ -127,7 +127,7 @@ class HomeController: UIViewController{
     }
     
     func loadAppointments(){
-        let service = AppointmentService.shared
+        let service = ClinicService.shared
         let params = BaseRequest.createParamsGetAppointmentByDate(username: Data.getUsername() ?? "", date: date)
         
         view.showHUD(with: "Đang tải danh sách lịch hẹn")

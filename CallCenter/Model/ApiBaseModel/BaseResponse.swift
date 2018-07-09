@@ -46,5 +46,6 @@ typealias loginResultType = ResultType<BaseSingleResponse<Clinic>>
 typealias getAppointmentsType = ResultType<BaseResponse<Appointment>>
 typealias getLicenseType = ResultType<BaseResponse<License>>
 typealias getPaymentTokenType = ResultType<BaseSingleResponse<Token>>
-typealias checkOutType = ResultType<StringResponse>
+typealias checkOutType = ResultType<BaseSingleResponse<Clinic>>
+typealias updateType = ResultType<BaseSingleResponse<Clinic>>
 

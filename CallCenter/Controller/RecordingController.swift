@@ -98,26 +98,52 @@ class RecordingController: UIViewController {
     // MARK: - Handle upload file
     
     @objc func handleButtonUploadSelected(){
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        let greetingRef = storageRef.child("phuong.mp3")
-        
-        view.showHUD(with: "")
-        greetingRef.putFile(from: getMP3FileURL(), metadata: nil) { (metadata, error) in
-            DispatchQueue.main.async {
-                self.view.hideHUD()
-                if error != nil{
-                    self.showAlert(title: "Thông báo", message: error?.localizedDescription ?? "Error")
-                    return
-                }                
-                self.showAlert(title: "Thông báo", message: "Tải tệp lên thành công")
-                storageRef.downloadURL(completion: { (url, error) in
-                    if let downloadUrl = url {
-                        print(downloadUrl.absoluteString)
-                    } else {
-                        print("error")
+        if let username = Data.user?.username{
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            let greetingRef = storageRef.child("audio/\(username)_audio.mp3")
+            
+            view.showHUD(with: "")
+            greetingRef.putFile(from: getMP3FileURL(), metadata: nil) { (metadata, error) in
+                DispatchQueue.main.async {
+                    self.view.hideHUD()
+                    if error != nil{
+                        self.showAlert(title: "Thông báo", message: error?.localizedDescription ?? "Error")
+                        return
                     }
-                })
+                    greetingRef.downloadURL(completion: { (url, error) in
+                        if let downloadUrl = url {
+                            self.updateGreetingUrl(url: downloadUrl.absoluteString, username: username)
+                        } else {
+                            self.showAlert(title: "Thông báo", message: "Tải tệp lên thất bại")
+                            print("error")
+                        }
+                    })
+                }
+            }
+        } else{
+            showAlert(title: "Lỗi", message: "Đã có lỗi xảy ra khi lấy thông tin tài khoản")
+        }
+    }
+    
+    // MARK: - Update greeting url
+    
+    func updateGreetingUrl(url: String, username: String){
+        let params = [paramUsername: username, paramGreetingUrl: url]
+        let service = ClinicService.shared
+        view.showHUD(with: "")
+        service.updateProfile(with: params) { (result) in
+            self.view.hideHUD()
+            switch result{
+            case .success(let response):
+                if let isSuccess = response.success, isSuccess, let user = response.value{
+                    Data.user = user
+                    self.showAlert(title: "Thông báo", message: "Cập nhật lời chào thành công")
+                } else if let error = response.error{
+                    self.showAlert(title: "Lỗi", message: error)
+                }
+            case .failure(error: let err):
+                self.showAlert(title: "Lỗi", message: err.localizedDescription)
             }
         }
     }
