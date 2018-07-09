@@ -183,16 +183,16 @@ extension HomeController: UISearchControllerDelegate, UISearchBarDelegate{
 
 extension HomeController: DatePickerModalDelegate{
     func onModalDismiss() {
+        
+    }
+    
+    func onModalDone(date: Date) {
+        self.date = date
         updateDatePickerText()
         loadAppointments()
     }
     
-    func onModalDone(date: Date) {
-
-    }
-    
     func datePickerChanged(picker: UIDatePicker) {
-        date = picker.date
     }
     
 }

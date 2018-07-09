@@ -138,7 +138,7 @@ class RecordingController: UIViewController {
             case .success(let response):
                 if let isSuccess = response.success, isSuccess, let user = response.value{
                     Data.user = user
-                    self.showAlert(title: "Thông báo", message: "Cập nhật lời chào thành công")
+                    self.showAlert(title: "Thông báo", message: "Cập nhật lời chào thành công", delegate: self)
                 } else if let error = response.error{
                     self.showAlert(title: "Lỗi", message: error)
                 }
@@ -340,5 +340,11 @@ extension RecordingController: AVAudioRecorderDelegate, AVAudioPlayerDelegate{
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         updateNotPlaying()
+    }
+}
+
+extension RecordingController: AlertDelegate{
+    func alertDismiss() {
+        navigationController?.popViewController(animated: true)
     }
 }

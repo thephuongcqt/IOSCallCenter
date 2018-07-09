@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AlertDelegate {
+    func alertDismiss()
+}
+
 extension UIApplication {
     var statusBarView: UIView? {
         return value(forKey: "statusBar") as? UIView
@@ -36,6 +40,14 @@ extension UIViewController{
     func showAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlert(title: String, message: String, delegate: AlertDelegate?){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            delegate?.alertDismiss()
+        }))
         self.present(alert, animated: true, completion: nil)
     }
 }
